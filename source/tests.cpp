@@ -34,6 +34,30 @@ TEST_CASE ("describe_vec2_operation_add", "[vec2_operation_add]") {
      REQUIRE(Approx(a.y) == c.y);
 }
 
+TEST_CASE ("describe_vec2_operation_sub", "[vec2_operation_sub]") {
+    //Vector (1, 0) - (0, 0)
+    Vec2 a {1.0f, 0.0f};
+    Vec2 b {0.0f, 0.0f};
+    Vec2 c {1.0f, 0.0f};
+    a -= b;
+    REQUIRE(Approx(a.x) == c.x);
+    REQUIRE(Approx(a.y) == c.y);
+    //Vector (5.1, -9.3) - (-5.1, 9.3)
+    a = {5.1f, -9.3f};
+    b = {-5.1f, 9.3f};
+    c = {10.2f, -18.6f};
+    a -= b;
+    REQUIRE(Approx(a.x) == c.x);
+    REQUIRE(Approx(a.y) == c.y);
+    //Vector (1.1, 2.2) - (3.3, 4.4)
+     a = {1.1f, 2.2f};
+     b = {3.3f, 4.4f};
+     c = {-2.2f, -2.2f};
+     a -= b;
+     REQUIRE(Approx(a.x) == c.x);
+     REQUIRE(Approx(a.y) == c.y);
+}
+
 
 int main(int argc, char *argv[])
 {
