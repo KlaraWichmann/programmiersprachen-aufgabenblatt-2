@@ -82,6 +82,30 @@ TEST_CASE ("describe_vec2_operation_multiply", "[vec2_operation_multiply]") {
      REQUIRE(Approx(a.y) == c.y);
 }
 
+TEST_CASE ("describe_vec2_operation_devide", "[vec2_operation_devide]") {
+    //Vector (1, 0) / 1
+    Vec2 a {1.0f, 0.0f};
+    float s = 1.0f;
+    Vec2 c {1.0f, 0.0f};
+    a /= s;
+    REQUIRE(Approx(a.x) == c.x);
+    REQUIRE(Approx(a.y) == c.y);
+    //Vector (5.1, -5.1) / -5.1
+    a = {5.1f, -5.1f};
+    s = -5.1f;
+    c = {-1.0f, 1.0f};
+    a /= s;
+    REQUIRE(Approx(a.x) == c.x);
+    REQUIRE(Approx(a.y) == c.y);
+    //Vector (1.1, 2.2) /= 4.0
+     a = {1.1f, 2.2f};
+     s = 4.0f;
+     c = {0.275f, 0.55f};
+     a /= s;
+     REQUIRE(Approx(a.x) == c.x);
+     REQUIRE(Approx(a.y) == c.y);
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
