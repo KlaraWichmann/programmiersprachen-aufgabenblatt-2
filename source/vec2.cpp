@@ -47,3 +47,9 @@ Vec2 operator/ (Vec2 const& v, float s) {
     result /= s;
     return result;
 }
+
+Vec2 operator* (float s, Vec2 const& v) {
+    Vec2 result {v};
+    result *= s;
+    return result;
+}
