@@ -106,7 +106,7 @@ TEST_CASE ("describe_vec2_operation_devide", "[vec2_operation_devide]") {
      REQUIRE(Approx(a.y) == c.y);
 }
 
-TEST_CASE ("describe_add_two_Vec2", "[vec2__add_two_Vec2]") {
+TEST_CASE ("describe_add_two_Vec2", "[vec2_add_two_Vec2]") {
     //Vector (1, 0) + (0, 0)
     Vec2 a {1.0f, 0.0f};
     Vec2 b {0.0f, 0.0f};
@@ -131,7 +131,7 @@ TEST_CASE ("describe_add_two_Vec2", "[vec2__add_two_Vec2]") {
     REQUIRE(Approx(c.y) == d.y);
 }
 
-TEST_CASE ("describe_subtract_two_Vec2", "[vec2__subtract_two_Vec2]") {
+TEST_CASE ("describe_subtract_two_Vec2", "[vec2_subtract_two_Vec2]") {
     //Vector (1, 0) - (0, 0)
     Vec2 a {1.0f, 0.0f};
     Vec2 b {0.0f, 0.0f};
@@ -156,7 +156,7 @@ TEST_CASE ("describe_subtract_two_Vec2", "[vec2__subtract_two_Vec2]") {
     REQUIRE(Approx(c.y) == d.y);
 }
 
-TEST_CASE ("describe_multiply_two_Vec2", "[vec2__multiply_two_Vec2]") {
+TEST_CASE ("describe_multiply_two_Vec2", "[vec2_multiply_two_Vec2]") {
     //Vector (1, 0) * 0.0
     Vec2 a {1.0f, 0.0f};
     float s = 0.0f;
@@ -177,6 +177,31 @@ TEST_CASE ("describe_multiply_two_Vec2", "[vec2__multiply_two_Vec2]") {
     s = -1.5f;
     d = {2.25f, -8.25f};
     c = a * s;
+    REQUIRE(Approx(c.x) == d.x);
+    REQUIRE(Approx(c.y) == d.y);
+}
+
+TEST_CASE ("describe_devide_two_Vec2", "[vec2_devide_two_Vec2]") {
+    //Vector (1, 0) / 1.0
+    Vec2 a {1.0f, 0.0f};
+    float s = 1.0f;
+    Vec2 c;
+    Vec2 d {1.0f, 0.0f};
+    c = a / s;
+    REQUIRE(Approx(c.x) == d.x);
+    REQUIRE(Approx(c.y) == d.y);
+    //Vector (-1.5, 5.7) / 1.5
+    a = {-1.5f, 5.7f};
+    s = 1.5f;
+    d = {-1.0f, 3.8f};
+    c = a / s;
+    REQUIRE(Approx(c.x) == d.x);
+    REQUIRE(Approx(c.y) == d.y);
+    //Vector (-1.5, 5.7) / -1.5
+    a = {-1.5f, 5.7f};
+    s = -1.5f;
+    d = {1.0f, -3.8f};
+    c = a / s;
     REQUIRE(Approx(c.x) == d.x);
     REQUIRE(Approx(c.y) == d.y);
 }
