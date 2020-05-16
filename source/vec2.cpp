@@ -35,3 +35,9 @@ Vec2 operator- (Vec2 const& u, Vec2 const& v) {
     result -= v;
     return result;
 }
+
+Vec2 operator* (Vec2 const& v, float s) {
+    Vec2 result {v};
+    result *= s;
+    return result;
+}
