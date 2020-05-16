@@ -11,3 +11,9 @@ Vec2& Vec2::operator-= (Vec2 const& v) {
     y -= v.y;
     return *this;
 }
+
+Vec2& Vec2::operator*= (float s) {
+    x *= s;
+    y *= s;
+    return *this;
+}

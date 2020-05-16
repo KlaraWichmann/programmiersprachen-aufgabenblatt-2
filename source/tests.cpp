@@ -58,6 +58,29 @@ TEST_CASE ("describe_vec2_operation_sub", "[vec2_operation_sub]") {
      REQUIRE(Approx(a.y) == c.y);
 }
 
+TEST_CASE ("describe_vec2_operation_multiply", "[vec2_operation_multiply]") {
+    //Vector (1, 0) * 0
+    Vec2 a {1.0f, 0.0f};
+    float s = 0.0f;
+    Vec2 c {0.0f, 0.0f};
+    a *= s;
+    REQUIRE(Approx(a.x) == c.x);
+    REQUIRE(Approx(a.y) == c.y);
+    //Vector (5.1, -9.3) * -9.3
+    a = {5.1f, -9.3f};
+    s = -9.3f;
+    c = {-47.43f, 86.49f};
+    a *= s;
+    REQUIRE(Approx(a.x) == c.x);
+    REQUIRE(Approx(a.y) == c.y);
+    //Vector (1.1, 2.2) * 4.0
+     a = {1.1f, 2.2f};
+     s = 4.0f;
+     c = {4.4f, 8.8f};
+     a *= s;
+     REQUIRE(Approx(a.x) == c.x);
+     REQUIRE(Approx(a.y) == c.y);
+}
 
 int main(int argc, char *argv[])
 {
