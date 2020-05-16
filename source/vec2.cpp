@@ -23,3 +23,10 @@ Vec2& Vec2::operator/= (float s) {
     y /= s;
     return *this;
 }
+
+Vec2 operator+ (Vec2 const& u, Vec2 const& v) {
+    Vec2 result;
+    result += u;
+    result += v;
+    return result;
+}
