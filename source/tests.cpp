@@ -131,6 +131,31 @@ TEST_CASE ("describe_add_two_Vec2", "[vec2__add_two_Vec2]") {
     REQUIRE(Approx(c.y) == d.y);
 }
 
+TEST_CASE ("describe_subtract_two_Vec2", "[vec2__subtract_two_Vec2]") {
+    //Vector (1, 0) - (0, 0)
+    Vec2 a {1.0f, 0.0f};
+    Vec2 b {0.0f, 0.0f};
+    Vec2 c;
+    Vec2 d {1.0f, 0.0f};
+    c = a - b;
+    REQUIRE(Approx(c.x) == d.x);
+    REQUIRE(Approx(c.y) == d.y);
+    //Vector (-1.5, 5.5) - (1.5, -1.0)
+    a = {-1.5f, 5.5f};
+    b = {1.5f, -1.0f};
+    d = {-3.0f, 6.5f};
+    c = a - b;
+    REQUIRE(Approx(c.x) == d.x);
+    REQUIRE(Approx(c.y) == d.y);
+    //Vector (-1.5, 5.5) - (-1.5, 1.0)
+    a = {-1.5f, 5.5f};
+    b = {-1.5f, 1.0f};
+    d = {0.0f, 4.5f};
+    c = a - b;
+    REQUIRE(Approx(c.x) == d.x);
+    REQUIRE(Approx(c.y) == d.y);
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

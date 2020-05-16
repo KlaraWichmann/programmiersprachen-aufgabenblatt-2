@@ -25,8 +25,13 @@ Vec2& Vec2::operator/= (float s) {
 }
 
 Vec2 operator+ (Vec2 const& u, Vec2 const& v) {
-    Vec2 result;
-    result += u;
+    Vec2 result {u};
     result += v;
+    return result;
+}
+
+Vec2 operator- (Vec2 const& u, Vec2 const& v) {
+    Vec2 result {u};
+    result -= v;
     return result;
 }
