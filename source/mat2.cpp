@@ -48,5 +48,13 @@ Mat2 inverse (Mat2 const& m) {
     return result;
 }
 
+Mat2 transpose (Mat2 const& m) {
+    Mat2 result;
+    result.e_00 = m.e_00;
+    result.e_10 = m.e_01;
+    result.e_01 = m.e_10;
+    result.e_11 = m.e_11;
+    return result;
+}
 
 

@@ -333,6 +333,17 @@ TEST_CASE ("describe_mat2_inverse", "[mat2_inverse]") {
     REQUIRE(Approx(a.e_11) == expected.e_11);
 }
 
+TEST_CASE ("describe_mat2_transpose", "[mat2_transpose]") {
+    //Matrix (-2, -3.7, 4.2, -5)
+    Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
+    Mat2 expected {-2.0f, 4.2f, -3.7f, -5.0f};
+    a = transpose (a);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
+}
+
 
 
 int main(int argc, char *argv[])
