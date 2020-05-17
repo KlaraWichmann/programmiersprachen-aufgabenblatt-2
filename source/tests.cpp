@@ -3,6 +3,7 @@
 #include "vec2.hpp"
 #include "mat2.hpp"
 
+
 TEST_CASE ("describe_vec2", "[vec2]") {
     Vec2 a; //requires that 0.0f == a.x and 0.0f == a.y
     REQUIRE (a.x == 0.0f);
@@ -232,7 +233,7 @@ TEST_CASE ("describe_devide_two_Vec2", "[vec2_devide_two_Vec2]") {
     REQUIRE(Approx(c.y) == d.y);
 }
 
-TEST_CASE ("describe_mat2_operation_multiply", "[_mat2_operation_multiply]") {
+TEST_CASE ("describe_mat2_operation_multiply", "[mat2_operation_multiply]") {
     //Matrix (2, 3, 4, 5) * (6, 7, 8, 9)
     Mat2 a {2.0f, 3.0f, 4.0f, 5.0f};
     Mat2 b {6.0f, 7.0f, 8.0f, 9.0f};
@@ -251,6 +252,28 @@ TEST_CASE ("describe_mat2_operation_multiply", "[_mat2_operation_multiply]") {
     REQUIRE(Approx(a.e_10) == c.e_10);
     REQUIRE(Approx(a.e_01) == c.e_01);
     REQUIRE(Approx(a.e_11) == c.e_11);
+}
+
+TEST_CASE ("describe_mat2_multiply_two_matrices", "[mat2_multiply_two_matrices]") {
+    //Matrix (2, 3, 4, 5) * (6, 7, 8, 9)
+    Mat2 a {2.0f, 3.0f, 4.0f, 5.0f};
+    Mat2 b {6.0f, 7.0f, 8.0f, 9.0f};
+    Mat2 c;
+    Mat2 d {36.0f, 41.0f, 64.0f, 73.0f};
+    c = a * b;
+    REQUIRE(Approx(c.e_00) == d.e_00);
+    REQUIRE(Approx(c.e_10) == d.e_10);
+    REQUIRE(Approx(c.e_01) == d.e_01);
+    REQUIRE(Approx(c.e_11) == d.e_11);
+    //Matrix (-2, 3.7, 4.2, -5) * (6.3, -7.5, 8.8, -9.2)
+    a = {-2.0f, 3.7f, 4.2f, -5.0f};
+    b = {6.3f, -7.5f, 8.8f, -9.2f};
+    d = {19.96f, -19.04f, -17.54f, 14.5f};
+    c = a * b;
+    REQUIRE(Approx(c.e_00) == d.e_00);
+    REQUIRE(Approx(c.e_10) == d.e_10);
+    REQUIRE(Approx(c.e_01) == d.e_01);
+    REQUIRE(Approx(c.e_11) == d.e_11);
 }
 
 

@@ -12,3 +12,10 @@ Mat2& Mat2::operator *= (Mat2 const& m) {
     return *this;
     
 }
+
+Mat2 operator * (Mat2 const& m1, Mat2 const& m2) {
+    Mat2 result {m1};
+    result *= m2;
+    return result;
+}
+

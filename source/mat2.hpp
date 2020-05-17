@@ -13,5 +13,4 @@ struct Mat2 {
     Mat2& operator *= (Mat2 const& m);
 };
 
-// TODO (in mat2.cpp) Definition v. operator *
-//Mat2 operator * (Mat2 const& m1, Mat2 const& m2);
+Mat2 operator * (Mat2 const& m1, Mat2 const& m2);
