@@ -13,9 +13,17 @@ Mat2& Mat2::operator *= (Mat2 const& m) {
     
 }
 
+float Mat2::det() const {
+    float determinant = 0.0f;
+    determinant = e_00 * e_11 - e_01 * e_10;
+    return determinant;
+}
+
 Mat2 operator * (Mat2 const& m1, Mat2 const& m2) {
     Mat2 result {m1};
     result *= m2;
     return result;
 }
+
+
 

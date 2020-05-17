@@ -276,6 +276,11 @@ TEST_CASE ("describe_mat2_multiply_two_matrices", "[mat2_multiply_two_matrices]"
     REQUIRE(Approx(c.e_11) == d.e_11);
 }
 
+TEST_CASE ("describe_mat2_determinant", "[mat2_determinant]") {
+    Mat2 a = {-2.0f, -3.7f, 4.2f, -5.0f};
+    REQUIRE(Approx(a.det()) == 25.54);
+}
+
 
 
 int main(int argc, char *argv[])
