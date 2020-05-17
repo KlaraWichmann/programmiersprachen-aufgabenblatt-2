@@ -1,3 +1,5 @@
+#include <exception>
+#include <iostream>
 #include "vec2.hpp"
 
 Vec2& Vec2::operator+= (Vec2 const& v) {
@@ -19,6 +21,9 @@ Vec2& Vec2::operator*= (float s) {
 }
 
 Vec2& Vec2::operator/= (float s) {
+    if (s == 0) {
+        throw std::invalid_argument ("Division by 0");
+    }
     x /= s;
     y /= s;
     return *this;
@@ -43,6 +48,9 @@ Vec2 operator* (Vec2 const& v, float s) {
 }
 
 Vec2 operator/ (Vec2 const& v, float s) {
+    if (s == 0) {
+        throw std::invalid_argument ("Division by 0");
+    }
     Vec2 result {v};
     result /= s;
     return result;

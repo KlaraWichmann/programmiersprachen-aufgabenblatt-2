@@ -19,18 +19,25 @@ float Mat2::det() const {
     return determinant;
 }
 
-Mat2 operator * (Mat2 const& m1, Mat2 const& m2) {
+Mat2 operator* (Mat2 const& m1, Mat2 const& m2) {
     Mat2 result {m1};
     result *= m2;
     return result;
 }
 
-Vec2 operator * (Mat2 const& m, Vec2 const& v) {
+Vec2 operator* (Mat2 const& m, Vec2 const& v) {
     Vec2 result;
     result.x = m.e_00 * v.x + m.e_10 * v.y;
     result.y = m.e_01 * v.x + m.e_11 * v.y;
     return result;
 }
+
+/*
+Vec2 operator* (Vec2 const& v, Mat2 const& m) {
+    Vec2 result;
+    
+}
+ */
 
 
 

@@ -106,6 +106,15 @@ TEST_CASE ("describe_vec2_operation_devide", "[vec2_operation_devide]") {
      a /= s;
      REQUIRE(Approx(a.x) == c.x);
      REQUIRE(Approx(a.y) == c.y);
+    //Vector (1.1, 2.2) /= 0.0
+     a = {1.1f, 2.2f};
+     s = 0.0f;
+    try {
+        a /= s;
+    }
+    catch (const std::invalid_argument& e) {
+        REQUIRE(true);
+    }
 }
 
 TEST_CASE ("describe_add_two_Vec2", "[vec2_add_two_Vec2]") {
@@ -231,6 +240,15 @@ TEST_CASE ("describe_devide_two_Vec2", "[vec2_devide_two_Vec2]") {
     c = a / s;
     REQUIRE(Approx(c.x) == d.x);
     REQUIRE(Approx(c.y) == d.y);
+    //Vector (1.1, 2.2) /= 0.0
+     a = {1.1f, 2.2f};
+     s = 0.0f;
+    try {
+        c = a / s;
+    }
+    catch (const std::invalid_argument& e) {
+        REQUIRE(true);
+    }
 }
 
 TEST_CASE ("describe_mat2_operation_multiply", "[mat2_operation_multiply]") {
