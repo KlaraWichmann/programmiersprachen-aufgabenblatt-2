@@ -297,15 +297,15 @@ TEST_CASE ("describe_mat2_multiply_two_matrices", "[mat2_multiply_two_matrices]"
 TEST_CASE ("describe_mat2_determinant", "[mat2_determinant]") {
     //Matrix (-2, -3.7, 4.2, -5)
     Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
-    REQUIRE(Approx(a.det()) == 25.54);
+    REQUIRE(Approx(a.det()) == 25.54f);
 }
 
 TEST_CASE ("describe_mat2_matrix_multiply_vector", "[mat2_matrix_multiply_vector]") {
     //Matrix (-2, -3.7, 4.2, -5) * (-2.4, 3.6)
     Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
-    Vec2 v {-2.4, 3.6};
+    Vec2 v {-2.4f, 3.6f};
     Vec2 result;
-    Vec2 expected {-8.52, -28.08};
+    Vec2 expected {-8.52f, -28.08f};
     result = a * v;
     REQUIRE(Approx(result.x) == expected.x);
     REQUIRE(Approx(result.y) == expected.y);
@@ -314,12 +314,23 @@ TEST_CASE ("describe_mat2_matrix_multiply_vector", "[mat2_matrix_multiply_vector
 TEST_CASE ("describe_mat2_vector_multiply_matrix", "[mat2_vector_multiply_matrix]") {
     //Matrix (-2.4, 3.6) * (-2, -3.7, 4.2, -5)
     Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
-    Vec2 v {-2.4, 3.6};
+    Vec2 v {-2.4f, 3.6f};
     Vec2 result;
-    Vec2 expected {19.92, -9.12};
+    Vec2 expected {19.92f, -9.12f};
     result = v * a;
     REQUIRE(Approx(result.x) == expected.x);
     REQUIRE(Approx(result.y) == expected.y);
+}
+
+TEST_CASE ("describe_mat2_inverse", "[mat2_inverse]") {
+    //Matrix (-2, -3.7, 4.2, -5)
+    Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
+    Mat2 expected {-0.1957713366f, 0.1448707879f, -0.1644479185f, -0.0783085302f};
+    a = inverse (a);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
 }
 
 
