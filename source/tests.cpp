@@ -311,6 +311,17 @@ TEST_CASE ("describe_mat2_matrix_multiply_vector", "[mat2_matrix_multiply_vector
     REQUIRE(Approx(result.y) == expected.y);
 }
 
+TEST_CASE ("describe_mat2_vector_multiply_matrix", "[mat2_vector_multiply_matrix]") {
+    //Matrix (-2.4, 3.6) * (-2, -3.7, 4.2, -5)
+    Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
+    Vec2 v {-2.4, 3.6};
+    Vec2 result;
+    Vec2 expected {19.92, -9.12};
+    result = v * a;
+    REQUIRE(Approx(result.x) == expected.x);
+    REQUIRE(Approx(result.y) == expected.y);
+}
+
 
 
 int main(int argc, char *argv[])
