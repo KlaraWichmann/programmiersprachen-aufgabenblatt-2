@@ -277,8 +277,20 @@ TEST_CASE ("describe_mat2_multiply_two_matrices", "[mat2_multiply_two_matrices]"
 }
 
 TEST_CASE ("describe_mat2_determinant", "[mat2_determinant]") {
-    Mat2 a = {-2.0f, -3.7f, 4.2f, -5.0f};
+    //Matrix (-2, -3.7, 4.2, -5)
+    Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
     REQUIRE(Approx(a.det()) == 25.54);
+}
+
+TEST_CASE ("describe_mat2_matrix_multiply_vector", "[mat2_matrix_multiply_vector]") {
+    //Matrix (-2, -3.7, 4.2, -5) * (-2.4, 3.6)
+    Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
+    Vec2 v {-2.4, 3.6};
+    Vec2 result;
+    Vec2 expected {-8.52, -28.08};
+    result = a * v;
+    REQUIRE(Approx(result.x) == expected.x);
+    REQUIRE(Approx(result.y) == expected.y);
 }
 
 
