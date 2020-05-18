@@ -3,6 +3,7 @@
 #include <math.h>
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "color.hpp"
 
 
 TEST_CASE ("describe_vec2", "[vec2]") {
@@ -363,6 +364,17 @@ TEST_CASE ("describe_mat2_rotation", "[mat2_rotation]") {
     REQUIRE(Approx(result.e_10) == expected.e_10);
     REQUIRE(Approx(result.e_01) == expected.e_01);
     REQUIRE(Approx(result.e_11) == expected.e_11);
+}
+
+TEST_CASE ("describe_color", "[color]") {
+    Color a; //requires that 128 == a.r and 128 == a.g and 128 == a.b
+    REQUIRE (a.r == 128);
+    REQUIRE (a.g == 128);
+    REQUIRE (a.b == 128);
+    Color b {255, 5, 10};
+    REQUIRE (Approx(b.r) == 255);
+    REQUIRE (Approx(b.g) == 5);
+    REQUIRE (Approx(b.b) == 10);
 }
 
 
