@@ -1,3 +1,6 @@
+#ifndef MAT2_HPP
+#define MAT2_HPP
+
 #include "vec2.hpp"
 
 // Mat2 definition
@@ -27,3 +30,6 @@ Mat2 inverse (Mat2 const& m);
 Mat2 transpose (Mat2 const& m);
 
 Mat2 make_rotation_mat2 (float phi);
+
+
+#endif // MAT2_HPP
