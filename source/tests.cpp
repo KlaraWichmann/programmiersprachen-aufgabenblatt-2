@@ -327,7 +327,7 @@ TEST_CASE ("describe_mat2_vector_multiply_matrix", "[mat2_vector_multiply_matrix
 TEST_CASE ("describe_mat2_inverse", "[mat2_inverse]") {
     //Matrix (-2, -3.7, 4.2, -5)
     Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
-    Mat2 expected {-0.1957713366f, 0.1448707879f, -0.1644479185f, -0.0783085302f};
+    Mat2 expected {-0.19577f, 0.14487f, -0.16444f, -0.07830f};
     a = inverse (a);
     REQUIRE(Approx(a.e_00) == expected.e_00);
     REQUIRE(Approx(a.e_10) == expected.e_10);
@@ -350,7 +350,7 @@ TEST_CASE ("describe_mat2_rotation", "[mat2_rotation]") {
     //phi 2* PI = 360 degrees
     float phi = 2 * M_PI;
     Mat2 result;
-    Mat2 expected {-0.2836910784f, -0.9589157104f, 0.9589157104f, -0.2836910784f};
+    Mat2 expected {-0.28369f, -0.95891f, 0.95891f, -0.28369f};
     result = make_rotation_mat2 (phi);
     REQUIRE(Approx(result.e_00) == expected.e_00);
     REQUIRE(Approx(result.e_10) == expected.e_10);
@@ -358,7 +358,7 @@ TEST_CASE ("describe_mat2_rotation", "[mat2_rotation]") {
     REQUIRE(Approx(result.e_11) == expected.e_11);
     //phi PI = 180 degrees
     phi = M_PI;
-    expected = {-0.5984600782f, 0.8011526465f, -0.8011526465f, -0.5984600782f};
+    expected = {-0.59846f, 0.80115f, -0.80115f, -0.59846f};
     result = make_rotation_mat2 (phi);
     REQUIRE(Approx(result.e_00) == expected.e_00);
     REQUIRE(Approx(result.e_10) == expected.e_10);
