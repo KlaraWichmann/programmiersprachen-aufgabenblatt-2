@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
+#include <math.h>
 #include "vec2.hpp"
 #include "mat2.hpp"
 
@@ -342,6 +343,26 @@ TEST_CASE ("describe_mat2_transpose", "[mat2_transpose]") {
     REQUIRE(Approx(a.e_10) == expected.e_10);
     REQUIRE(Approx(a.e_01) == expected.e_01);
     REQUIRE(Approx(a.e_11) == expected.e_11);
+}
+
+TEST_CASE ("describe_mat2_rotation", "[mat2_rotation]") {
+    //phi 2* PI = 360 degrees
+    float phi = 2 * M_PI;
+    Mat2 result;
+    Mat2 expected {-0.2836910784f, -0.9589157104f, 0.9589157104f, -0.2836910784f};
+    result = make_rotation_mat2 (phi);
+    REQUIRE(Approx(result.e_00) == expected.e_00);
+    REQUIRE(Approx(result.e_10) == expected.e_10);
+    REQUIRE(Approx(result.e_01) == expected.e_01);
+    REQUIRE(Approx(result.e_11) == expected.e_11);
+    //phi PI = 180 degrees
+    phi = M_PI;
+    expected = {-0.5984600782f, 0.8011526465f, -0.8011526465f, -0.5984600782f};
+    result = make_rotation_mat2 (phi);
+    REQUIRE(Approx(result.e_00) == expected.e_00);
+    REQUIRE(Approx(result.e_10) == expected.e_10);
+    REQUIRE(Approx(result.e_01) == expected.e_01);
+    REQUIRE(Approx(result.e_11) == expected.e_11);
 }
 
 

@@ -1,4 +1,5 @@
 #include "mat2.hpp"
+#include <math.h>
 
 Mat2& Mat2::operator *= (Mat2 const& m) {
     float zero = e_00 * m.e_00 + e_10 * m.e_01;
@@ -55,6 +56,16 @@ Mat2 transpose (Mat2 const& m) {
     result.e_01 = m.e_10;
     result.e_11 = m.e_11;
     return result;
+}
+
+Mat2 make_rotation_mat2 (float phi) {
+    Mat2 rotation_matrix;
+    float degree = phi / M_PI * 180;
+    rotation_matrix.e_00 = cos (degree);
+    rotation_matrix.e_10 = -sin (degree);
+    rotation_matrix.e_01 = sin (degree);
+    rotation_matrix.e_11 = cos (degree);
+    return rotation_matrix;
 }
 
 
