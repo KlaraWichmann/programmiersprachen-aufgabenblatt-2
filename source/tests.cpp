@@ -4,6 +4,7 @@
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include "color.hpp"
+#include "shapes.hpp"
 
 
 TEST_CASE ("describe_vec2", "[vec2]") {
@@ -371,13 +372,11 @@ TEST_CASE ("describe_color", "[color]") {
     REQUIRE (a.r == 128);
     REQUIRE (a.g == 128);
     REQUIRE (a.b == 128);
-    Color b {255, 5, 10};
-    REQUIRE (Approx(b.r) == 255);
-    REQUIRE (Approx(b.g) == 5);
-    REQUIRE (Approx(b.b) == 10);
+    Color b {69, 4, 20};
+    REQUIRE (Approx(b.r) == 69);
+    REQUIRE (Approx(b.g) == 4);
+    REQUIRE (Approx(b.b) == 20);
 }
-
-
 
 int main(int argc, char *argv[])
 {
