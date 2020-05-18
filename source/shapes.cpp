@@ -6,17 +6,17 @@ Circle::Circle (float r, Color const& clr):
 {}
 
 
-Rectangle::Rectangle (Vec2 const& minimum, Vec2 const& maximum, float width, float height, Color const& clr):
+Rectangle::Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr):
     min_ {minimum},
     max_ {maximum},
-    width_ {width},
-    height_ {height},
     color_ {clr}
 {}
 
 float Rectangle::circumference() const {
     float result = 0.0f;
-    result = 2 * width_ + 2 * height_;
+    float width = max_.x - min_.x;
+    float height = max_.y - min_.y;
+    result = 2 * width + 2 * height;
     return result;
 }
 

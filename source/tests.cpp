@@ -380,7 +380,6 @@ TEST_CASE ("describe_color", "[color]") {
 TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
     // Circle r = 2.5, color = 255, 255, 255
     Color white {255, 255, 255};
-    Circle c {1.0f, white};
     Circle a {2.5f, white};
     float result = 0.0f;
     float expected = 15.70796f;
@@ -402,16 +401,34 @@ TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
     expected = 6.28318f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);
-     
 }
 
-/*
-TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
-    Vec2 a;
-    Vec2 b;
-    Rectangle r {a, b, 1.0f, 1.0f, Color {255, 255, 255}};
+
+TEST_CASE ("describe_circumference_rectangle", "[circumference_rectangle]") {
+    // Rectangle (0, 0) (1, 1), color = 255, 255, 255
+    Color white {255, 255, 255};
+    Vec2 max {1.0f, 1.0f};
+    Vec2 min {0.0f, 0.0f};
+    float result = 0.0f;
+    float expected = 4.0f;
+    Rectangle r {min, max, white};
+    result = r.circumference ();
+    REQUIRE (Approx(result) == expected);
+    // Rectangle (-5.5, 10.5) (5.5, 20.3), color = 255, 255, 255
+    min = {-5.5f, 10.5f};
+    max = {5.5f, 20.3f};
+    expected = 41.6f;
+    r = {min, max, white};
+    result = r.circumference ();
+    REQUIRE (Approx(result) == expected);
+    // Rectangle (-5.5, -5.5) (-1.5, -1.5), color = 255, 255, 255
+    min = {-5.5f, -5.5f};
+    max = {-1.5f, -1.5f};
+    expected = 16.0f;
+    r = {min, max, white};
+    result = r.circumference ();
+    REQUIRE (Approx(result) == expected);
 }
- */
     
 int main(int argc, char *argv[])
 {
