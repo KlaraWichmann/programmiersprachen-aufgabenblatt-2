@@ -1,6 +1,5 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
-#include <math.h>
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include "color.hpp"
@@ -372,12 +371,48 @@ TEST_CASE ("describe_color", "[color]") {
     REQUIRE (a.r == 128);
     REQUIRE (a.g == 128);
     REQUIRE (a.b == 128);
-    Color b {69, 4, 20};
+    Color b {69, 4, 20}; //requires that 69 == a.r and 4 == a.g and 20 == a.b
     REQUIRE (Approx(b.r) == 69);
     REQUIRE (Approx(b.g) == 4);
     REQUIRE (Approx(b.b) == 20);
 }
 
+TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
+    // Circle r = 2.5, color = 255, 255, 255
+    Color white {255, 255, 255};
+    Circle c {1.0f, white};
+    Circle a {2.5f, white};
+    float result = 0.0f;
+    float expected = 15.70796f;
+    result = a.circumference ();
+    REQUIRE (Approx(result) == expected);
+    
+    // Circle r = -3.7, color = 255, 255, 255
+    a = {-3.7f, white};
+    expected = -23.24778f;
+    result = a.circumference ();
+    REQUIRE (Approx(result) == expected);
+    // Circle r = 0, color = 255, 255, 255
+    a =  {0.0f, white};
+    expected = 0.0f;
+    result = a.circumference ();
+    REQUIRE (Approx(result) == expected);
+    // Circle r = 1.0, color = 255, 255, 255
+    a =  {1.0f, white};
+    expected = 6.28318f;
+    result = a.circumference ();
+    REQUIRE (Approx(result) == expected);
+     
+}
+
+/*
+TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
+    Vec2 a;
+    Vec2 b;
+    Rectangle r {a, b, 1.0f, 1.0f, Color {255, 255, 255}};
+}
+ */
+    
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

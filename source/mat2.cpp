@@ -1,5 +1,4 @@
 #include "mat2.hpp"
-#include <math.h>
 
 Mat2& Mat2::operator *= (Mat2 const& m) {
     float zero = e_00 * m.e_00 + e_10 * m.e_01;
