@@ -20,5 +20,8 @@
 *.out
 *.app
 
+.DS_Store
+
+
 build
 cmake_out
