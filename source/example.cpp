@@ -5,23 +5,24 @@
 #include <cmath>
 
 #include <iostream>
+#include <vector>
 
 
 int main(int argc, char* argv[])
 {
+    std::vector<Circle> cir = {
+        {100.0f, Vec2 {200.0f, 200.0f}, Color {1.0f, 1.0f, 1.0f}},
+        {100.0f, Vec2 {400.0f, 400.0f}, Color {1.0f, 1.0f, 1.0f}}
+    };
+    
+    std::vector<Rectangle> rec = {
+        {Vec2 {0.0f, 0.0f}, Vec2 {100.0f, 100.0f}, Color {1.0f, 1.0f, 1.0f}},
+        {Vec2 {100.0f, 50.0f}, Vec2 {200.0f, 300.0f}, Color {1.0f, 1.0f, 1.0f}}
+    };
+    
   Window win{std::make_pair(800,800)};
-    
-    Color white {1.0f, 1.0f, 1.0f};
-    Vec2 max {100.0f, 100.0f};
-    Vec2 min {0.0f, 0.0f};
-    Rectangle rec {min, max, white};
-    
-    Vec2 max_highlight {200.0f, 300.0f};
-    Vec2 min_highlight {100.0f, 50.0f};
-    Rectangle rec_highlight {min_highlight, max_highlight, white};
-    
-    Circle c {100.0f, Vec2 {200.0f, 200.0f}, white};
-    Circle c_highlight {100.0f, Vec2 {400.0f, 400.0f}, white};
+
+
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -71,24 +72,25 @@ int main(int argc, char* argv[])
       float y_rectangle = 0.0f;
       std::tie (x_rectangle, y_rectangle) = win.mouse_position();
       Vec2 mouse_rec {x_rectangle, y_rectangle};
-      if (rec.is_inside (mouse_rec)) {
-          rec.draw (win, true);
+      if (rec[0].is_inside (mouse_rec)) {
+          rec[0].draw (win, true);
       } else {
-          rec.draw (win);
+          rec[0].draw (win);
       }
       
-      //rec_highlight.draw (win, true);
+      rec[1].draw (win, true);
+      
       float x_circle = 0.0f;
       float y_circle = 0.0f;
       std::tie (x_circle, y_circle) = win.mouse_position();
       Vec2 mouse_circle {x_circle, y_circle};
-      if (c.is_inside (mouse_circle)) {
-          c.draw (win, true);
+      if (cir[0].is_inside (mouse_circle)) {
+          cir[0].draw (win, true);
       } else {
-          c.draw (win);
+          cir[0].draw (win);
       }
       
-      //c_highlight.draw (win, true);
+      cir[1].draw (win, true);
       
     win.update();
   }
