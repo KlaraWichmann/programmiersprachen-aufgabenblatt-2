@@ -26,6 +26,7 @@ class Rectangle {
         float circumference() const;
         void draw (Window const& win) const;
         void draw (Window const& win, bool highlight) const;
+        bool is_inside (Vec2 const& v);
     private:
         Vec2 min_;
         Vec2 max_;

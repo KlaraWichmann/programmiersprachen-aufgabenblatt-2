@@ -105,3 +105,10 @@ void Rectangle::draw (Window const& win, bool highlight) const {
                       clr.r, clr.g, clr.b,
                       1.0f);
 }
+
+bool Rectangle::is_inside (Vec2 const& v) {
+    if (v.x >= min_.x && v.x <= max_.x && v.y >= min_.y && v.y <= max_.y) {
+        return true;
+    }
+    return false;
+}

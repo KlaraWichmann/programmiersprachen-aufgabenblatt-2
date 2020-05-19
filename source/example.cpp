@@ -67,7 +67,14 @@ int main(int argc, char* argv[])
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
       
-      rec.draw (win);
+      float a, b;
+      std::tie (a, b) = win.mouse_position();
+      Vec2 mouse {a, b};
+      if (rec.is_inside (mouse)) {
+          rec.draw (win, true);
+      } else {
+          rec.draw (win);
+      }
       
       rec_highlight.draw (win, true);
       
