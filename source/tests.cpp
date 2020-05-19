@@ -429,6 +429,26 @@ TEST_CASE ("describe_circumference_rectangle", "[circumference_rectangle]") {
     result = r.circumference ();
     REQUIRE (Approx(result) == expected);
 }
+
+TEST_CASE ("describe_is_inside_rectangle", "[is_inside_rectangle]") {
+    Color white {0.0f, 0.0f, 0.0f};
+    Circle c {2.5f, Vec2 {0.0f, 0.0f}, white};
+    //Vec (20, 20)
+    Vec2 v {20.0f, 20.0f};
+    REQUIRE (c.is_inside (v) == false);
+    //Vec (0, 0)
+     v = {0.0f, 0.0f};
+     REQUIRE (c.is_inside (v) == true);
+    //Vec (-20, -20)
+     v = {-20.0f, -20.0f};
+     REQUIRE (c.is_inside (v) == false);
+    //Vec (2.5, 2.5)
+     v = {2.5f, 2.5f};
+     REQUIRE (c.is_inside (v) == true);
+}
+
+TEST_CASE ("describe_is_inside_circle", "[is_inside_circle]") {
+}
     
 int main(int argc, char *argv[])
 {
