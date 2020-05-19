@@ -2,9 +2,9 @@
 #define COLOR_HPP
 
 struct Color {
-    unsigned char r = 128;
-    unsigned char g = 128;
-    unsigned char b = 128;
+    float r = 0.5;
+    float g = 0.5;
+    float b = 0.5;
 };
 
 

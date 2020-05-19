@@ -367,19 +367,19 @@ TEST_CASE ("describe_mat2_rotation", "[mat2_rotation]") {
 }
 
 TEST_CASE ("describe_color", "[color]") {
-    Color a; //requires that 128 == a.r and 128 == a.g and 128 == a.b
-    REQUIRE (a.r == 128);
-    REQUIRE (a.g == 128);
-    REQUIRE (a.b == 128);
-    Color b {69, 4, 20}; //requires that 69 == a.r and 4 == a.g and 20 == a.b
-    REQUIRE (Approx(b.r) == 69);
-    REQUIRE (Approx(b.g) == 4);
-    REQUIRE (Approx(b.b) == 20);
+    Color a; //requires that 0.5 == a.r and 0.5 == a.g and 0.5 == a.b
+    REQUIRE (a.r == 0.5f);
+    REQUIRE (a.g == 0.5f);
+    REQUIRE (a.b == 0.5f);
+    Color b {0.69f, 0.4f, 0.2f}; //requires that 0.69 == a.r and 0.4 == a.g and 0.2 == a.b
+    REQUIRE (Approx(b.r) == 0.69f);
+    REQUIRE (Approx(b.g) == 0.4f);
+    REQUIRE (Approx(b.b) == 0.2f);
 }
 
 TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
     // Circle r = 2.5, color = 255, 255, 255
-    Color white {255, 255, 255};
+    Color white {0.0f, 0.0f, 0.0f};
     Circle a {2.5f, white};
     float result = 0.0f;
     float expected = 15.70796f;
@@ -406,7 +406,7 @@ TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
 
 TEST_CASE ("describe_circumference_rectangle", "[circumference_rectangle]") {
     // Rectangle (0, 0) (1, 1), color = 255, 255, 255
-    Color white {255, 255, 255};
+    Color white {0.0f, 0.0f, 0.0f};
     Vec2 max {1.0f, 1.0f};
     Vec2 min {0.0f, 0.0f};
     float result = 0.0f;
