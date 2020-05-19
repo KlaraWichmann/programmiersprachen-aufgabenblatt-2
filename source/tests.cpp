@@ -430,7 +430,7 @@ TEST_CASE ("describe_circumference_rectangle", "[circumference_rectangle]") {
     REQUIRE (Approx(result) == expected);
 }
 
-TEST_CASE ("describe_is_inside_rectangle", "[is_inside_rectangle]") {
+TEST_CASE ("describe_is_inside_circle", "[is_inside_circle]") {
     Color white {0.0f, 0.0f, 0.0f};
     Circle c {2.5f, Vec2 {0.0f, 0.0f}, white};
     //Vec (20, 20)
@@ -447,7 +447,23 @@ TEST_CASE ("describe_is_inside_rectangle", "[is_inside_rectangle]") {
      REQUIRE (c.is_inside (v) == true);
 }
 
-TEST_CASE ("describe_is_inside_circle", "[is_inside_circle]") {
+TEST_CASE ("describe_is_inside_rectangle", "[is_inside_rectangle]") {
+    Color white {0.0f, 0.0f, 0.0f};
+    Vec2 max {10.0f, 10.0f};
+    Vec2 min {0.0f, 0.0f};
+    Rectangle rec {min, max, white};
+    //Vec (20, 20)
+    Vec2 v {20.0f, 20.0f};
+    REQUIRE (rec.is_inside (v) == false);
+    //Vec (0, 0)
+     v = {0.0f, 0.0f};
+     REQUIRE (rec.is_inside (v) == true);
+    //Vec (-20, -20)
+     v = {-20.0f, -20.0f};
+     REQUIRE (rec.is_inside (v) == false);
+    //Vec (2.5, 2.5)
+     v = {2.5f, 2.5f};
+     REQUIRE (rec.is_inside (v) == true);
 }
     
 int main(int argc, char *argv[])
