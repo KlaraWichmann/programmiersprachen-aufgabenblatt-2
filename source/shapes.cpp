@@ -15,15 +15,15 @@ float Circle::circumference() const {
 }
 
 void Circle::draw (Window const& win) const {
-    float temp_x = cos(0) * radius_;
-    float temp_y = sin(0) * radius_;
-     for (int i = 1; i <= 24; i++) {
+    float temp_x = center_ + cos(1 * (M_PI/180)) * radius_;
+    float temp_y = center_ + sin(1 * (M_PI/180)) * radius_;
+    for (int i = 2; i <= 360; i++) {
          win.draw_line (temp_x, temp_y,
-         cos(i) * radius_, sin(i) * radius_,
+         center_ + cos(i * (M_PI/180)) * radius_, center_ + sin(i * (M_PI/180)) * radius_,
          color_.r, color_.g, color_.b,
          1.0f);
-        temp_x = cos(i) * radius_;
-        temp_y = sin(i) * radius_;
+        temp_x = center_ + cos(i * (M_PI/180)) * radius_;
+        temp_y = center_ + sin(i * (M_PI/180)) * radius_;
     }
 }
 
