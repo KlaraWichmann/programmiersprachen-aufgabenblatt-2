@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-Circle::Circle (float r, /*float centr,*/ Color const& clr):
+Circle::Circle (float r, float centr, Color const& clr):
     radius_ {r},
-    //center_ {centr},
+    center_ {centr},
     color_ {clr}
 {}
 

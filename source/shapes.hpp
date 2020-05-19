@@ -8,12 +8,12 @@
 
 class Circle {
     public:
-        Circle (float r, /*float centr,*/ Color const& clr);
+        Circle (float r, float centr, Color const& clr);
         float circumference() const;
         void draw (Window const& win) const;
     private:
-    float radius_;// = 0.0f;
-        //float center_ = 0.0f;
+        float radius_ = 0.0f;
+        float center_ = 0.0f;
         Color color_;
 };
 

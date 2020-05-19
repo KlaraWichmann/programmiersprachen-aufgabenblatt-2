@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     Vec2 min {0.0f, 0.0f};
     Rectangle rec {min, max, white};
     
-    Circle c {100.0f, white};
+    Circle c {100.0f, 100.0f, white};
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
       
       rec.draw (win);
       
-      //c.draw (win);
+      c.draw (win);
       
     win.update();
   }
