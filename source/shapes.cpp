@@ -27,6 +27,25 @@ void Circle::draw (Window const& win) const {
     }
 }
 
+void Circle::draw (Window const& win, bool highlight) const {
+    Color clr;
+    if (highlight) {
+        clr = highlight_color_;
+    } else {
+        clr = color_;
+    }
+    float temp_x = center_ + cos(1 * (M_PI/180)) * radius_;
+    float temp_y = center_ + sin(1 * (M_PI/180)) * radius_;
+    for (int i = 2; i <= 360; i++) {
+         win.draw_line (temp_x, temp_y,
+         center_ + cos(i * (M_PI/180)) * radius_, center_ + sin(i * (M_PI/180)) * radius_,
+         clr.r, clr.g, clr.b,
+         1.0f);
+        temp_x = center_ + cos(i * (M_PI/180)) * radius_;
+        temp_y = center_ + sin(i * (M_PI/180)) * radius_;
+    }
+}
+
 
 Rectangle::Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr):
     min_ {minimum},

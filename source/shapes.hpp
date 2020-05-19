@@ -11,10 +11,12 @@ class Circle {
         Circle (float r, float centr, Color const& clr);
         float circumference() const;
         void draw (Window const& win) const;
+        void draw (Window const& win, bool highlight) const;
     private:
         float radius_ = 0.0f;
         float center_ = 0.0f;
         Color color_;
+        Color highlight_color_ {1.0f, 1.0f, 0.0f};
 };
 
 class Rectangle {
@@ -27,6 +29,7 @@ class Rectangle {
         Vec2 min_;
         Vec2 max_;
         Color color_;
+        Color highlight_color_ {1.0f, 1.0f, 0.0f};
 };
 
 
