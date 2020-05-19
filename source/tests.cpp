@@ -380,23 +380,24 @@ TEST_CASE ("describe_color", "[color]") {
 TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
     // Circle r = 2.5, color = 255, 255, 255
     Color white {0.0f, 0.0f, 0.0f};
-    Circle a {2.5f, 1.0f, white};
+    Vec2 ctr;
+    Circle a {2.5f, ctr, white};
     float result = 0.0f;
     float expected = 15.70796f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);
     // Circle r = -3.7, color = 255, 255, 255
-    a = {-3.7f, 1.0f, white};
+    a = {-3.7f, ctr, white};
     expected = -23.24778f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);
     // Circle r = 0, color = 255, 255, 255
-    a =  {0.0f, 1.0f, white};
+    a =  {0.0f, ctr, white};
     expected = 0.0f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);
     // Circle r = 1.0, color = 255, 255, 255
-    a =  {1.0f, 1.0f, white};
+    a =  {1.0f, ctr, white};
     expected = 6.28318f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);

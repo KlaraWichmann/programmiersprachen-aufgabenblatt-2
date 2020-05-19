@@ -20,8 +20,8 @@ int main(int argc, char* argv[])
     Vec2 min_highlight {100.0f, 50.0f};
     Rectangle rec_highlight {min_highlight, max_highlight, white};
     
-    Circle c {100.0f, 200.0f, white};
-    Circle c_highlight {100.0f, 400.0f, white};
+    Circle c {100.0f, Vec2 {200.0f, 200.0f}, white};
+    Circle c_highlight {100.0f, Vec2 {400.0f, 400.0f}, white};
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -67,20 +67,28 @@ int main(int argc, char* argv[])
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
       
-      float a, b;
-      std::tie (a, b) = win.mouse_position();
-      Vec2 mouse {a, b};
-      if (rec.is_inside (mouse)) {
+      float x_rectangle = 0.0f;
+      float y_rectangle = 0.0f;
+      std::tie (x_rectangle, y_rectangle) = win.mouse_position();
+      Vec2 mouse_rec {x_rectangle, y_rectangle};
+      if (rec.is_inside (mouse_rec)) {
           rec.draw (win, true);
       } else {
           rec.draw (win);
       }
       
-      rec_highlight.draw (win, true);
+      //rec_highlight.draw (win, true);
+      float x_circle = 0.0f;
+      float y_circle = 0.0f;
+      std::tie (x_circle, y_circle) = win.mouse_position();
+      Vec2 mouse_circle {x_circle, y_circle};
+      if (c.is_inside (mouse_circle)) {
+          c.draw (win, true);
+      } else {
+          c.draw (win);
+      }
       
-      c.draw (win);
-      
-      c_highlight.draw (win, true);
+      //c_highlight.draw (win, true);
       
     win.update();
   }

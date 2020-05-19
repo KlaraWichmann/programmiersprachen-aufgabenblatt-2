@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Circle::Circle (float r, float centr, Color const& clr):
+Circle::Circle (float r, Vec2 centr, Color const& clr):
     radius_ {r},
     center_ {centr},
     color_ {clr}
@@ -15,15 +15,15 @@ float Circle::circumference() const {
 }
 
 void Circle::draw (Window const& win) const {
-    float temp_x = center_ + cos(1 * (M_PI/180)) * radius_;
-    float temp_y = center_ + sin(1 * (M_PI/180)) * radius_;
+    float temp_x = center_.x + cos(1 * (M_PI/180)) * radius_;
+    float temp_y = center_.x + sin(1 * (M_PI/180)) * radius_;
     for (int i = 2; i <= 360; i++) {
          win.draw_line (temp_x, temp_y,
-         center_ + cos(i * (M_PI/180)) * radius_, center_ + sin(i * (M_PI/180)) * radius_,
-         color_.r, color_.g, color_.b,
-         1.0f);
-        temp_x = center_ + cos(i * (M_PI/180)) * radius_;
-        temp_y = center_ + sin(i * (M_PI/180)) * radius_;
+                        center_.x + cos(i * (M_PI/180)) * radius_, center_.x + sin(i * (M_PI/180)) * radius_,
+                        color_.r, color_.g, color_.b,
+                        1.0f);
+        temp_x = center_.x + cos(i * (M_PI/180)) * radius_;
+        temp_y = center_.x + sin(i * (M_PI/180)) * radius_;
     }
 }
 
@@ -34,16 +34,25 @@ void Circle::draw (Window const& win, bool highlight) const {
     } else {
         clr = color_;
     }
-    float temp_x = center_ + cos(1 * (M_PI/180)) * radius_;
-    float temp_y = center_ + sin(1 * (M_PI/180)) * radius_;
+    float temp_x = center_.x + cos(1 * (M_PI/180)) * radius_;
+    float temp_y = center_.x + sin(1 * (M_PI/180)) * radius_;
     for (int i = 2; i <= 360; i++) {
          win.draw_line (temp_x, temp_y,
-         center_ + cos(i * (M_PI/180)) * radius_, center_ + sin(i * (M_PI/180)) * radius_,
-         clr.r, clr.g, clr.b,
-         1.0f);
-        temp_x = center_ + cos(i * (M_PI/180)) * radius_;
-        temp_y = center_ + sin(i * (M_PI/180)) * radius_;
+                        center_.x + cos(i * (M_PI/180)) * radius_, center_.x + sin(i * (M_PI/180)) * radius_,
+                        clr.r, clr.g, clr.b,
+                        1.0f);
+        temp_x = center_.x + cos(i * (M_PI/180)) * radius_;
+        temp_y = center_.x + sin(i * (M_PI/180)) * radius_;
     }
+}
+
+bool Circle::is_inside (Vec2 const& v) {
+    Vec2 min {center_.x - radius_, center_.y - radius_};
+    Vec2 max {center_.x + radius_, center_.y + radius_};
+    if (v.x >= min.x && v.x <= max.x && v.y >= min.y && v.y <= max.y) {
+        return true;
+    }
+    return false;
 }
 
 

@@ -8,13 +8,14 @@
 
 class Circle {
     public:
-        Circle (float r, float centr, Color const& clr);
+        Circle (float r, Vec2 centr, Color const& clr);
         float circumference() const;
         void draw (Window const& win) const;
         void draw (Window const& win, bool highlight) const;
+        bool is_inside (Vec2 const& v);
     private:
         float radius_ = 0.0f;
-        float center_ = 0.0f;
+        Vec2 center_;
         Color color_;
         Color highlight_color_ {1.0f, 1.0f, 0.0f};
 };
