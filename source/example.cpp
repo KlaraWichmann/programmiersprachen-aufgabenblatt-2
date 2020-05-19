@@ -1,18 +1,28 @@
 #include "window.hpp"
+#include "shapes.hpp"
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
+
+#include <iostream>
 
 
 int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
+    
+    Color white {1.0f, 1.0f, 1.0f};
+    Vec2 max {100.0f, 100.0f};
+    Vec2 min {0.0f, 0.0f};
+    Rectangle rec {min, max, white};
+    
+    Circle c {100.0f, white};
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
-
+      
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
     auto t = win.get_time();
@@ -51,7 +61,11 @@ int main(int argc, char* argv[])
     unsigned int font_size = 35;
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
-
+      
+      rec.draw (win);
+      
+      //c.draw (win);
+      
     win.update();
   }
 

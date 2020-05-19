@@ -8,11 +8,12 @@
 
 class Circle {
     public:
-        Circle (float r, Color const& clr);
+        Circle (float r, /*float centr,*/ Color const& clr);
         float circumference() const;
-        void draw (Window win) const;
+        void draw (Window const& win) const;
     private:
-        float radius_;
+    float radius_;// = 0.0f;
+        //float center_ = 0.0f;
         Color color_;
 };
 
@@ -21,7 +22,7 @@ class Rectangle {
         Rectangle () = default;
         Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr);
         float circumference() const;
-        void draw (Window win) const;
+        void draw (Window const& win) const;
     private:
         Vec2 min_;
         Vec2 max_;
