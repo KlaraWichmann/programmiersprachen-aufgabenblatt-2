@@ -25,6 +25,7 @@ class Rectangle {
         Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr);
         float circumference() const;
         void draw (Window const& win) const;
+        void draw (Window const& win, bool highlight) const;
     private:
         Vec2 min_;
         Vec2 max_;

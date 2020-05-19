@@ -16,6 +16,10 @@ int main(int argc, char* argv[])
     Vec2 min {0.0f, 0.0f};
     Rectangle rec {min, max, white};
     
+    Vec2 max_highlight {200.0f, 300.0f};
+    Vec2 min_highlight {100.0f, 50.0f};
+    Rectangle rec_highlight {min_highlight, max_highlight, white};
+    
     Circle c {100.0f, 200.0f, white};
     Circle c_highlight {100.0f, 400.0f, white};
 
@@ -64,6 +68,8 @@ int main(int argc, char* argv[])
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
       
       rec.draw (win);
+      
+      rec_highlight.draw (win, true);
       
       c.draw (win);
       

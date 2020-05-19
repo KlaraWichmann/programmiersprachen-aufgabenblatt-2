@@ -79,3 +79,29 @@ void Rectangle::draw (Window const& win) const {
                       color_.r, color_.g, color_.b,
                       1.0f);
 }
+
+void Rectangle::draw (Window const& win, bool highlight) const {
+    Color clr;
+    if (highlight) {
+        clr = highlight_color_;
+    } else {
+        clr = color_;
+    }
+    
+    win.draw_line (min_.x, min_.y,
+                      max_.x, min_.y,
+                      clr.r, clr.g, clr.b,
+                      1.0f);
+    win.draw_line (max_.x, min_.y,
+                      max_.x, max_.y,
+                      clr.r, clr.g, clr.b,
+                      1.0f);
+    win.draw_line (max_.x, max_.y,
+                      min_.x, max_.y,
+                      clr.r, clr.g, clr.b,
+                      1.0f);
+    win.draw_line (min_.x, max_.y,
+                      min_.x, min_.y,
+                      clr.r, clr.g, clr.b,
+                      1.0f);
+}
