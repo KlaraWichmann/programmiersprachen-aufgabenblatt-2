@@ -560,6 +560,14 @@ TEST_CASE ("describe_color", "[color]") {
     REQUIRE (Approx(b.r) == 0.69f);
     REQUIRE (Approx(b.g) == 0.4f);
     REQUIRE (Approx(b.b) == 0.2f);
+    b = {1.0f, 1.0f, 1.0f}; //requires that 1.0 == a.r and 1.0 == a.g and 1.0 == a.b
+    REQUIRE (Approx(b.r) == 1.0f);
+    REQUIRE (Approx(b.g) == 1.0f);
+    REQUIRE (Approx(b.b) == 1.0f);
+    b = {0.09f, 0.04f, 0.02f}; //requires that 0.09 == a.r and 0.04 == a.g and 0.02 == a.b
+    REQUIRE (Approx(b.r) == 0.09f);
+    REQUIRE (Approx(b.g) == 0.04f);
+    REQUIRE (Approx(b.b) == 0.02f);
 }
 
 TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
@@ -610,6 +618,13 @@ TEST_CASE ("describe_circumference_rectangle", "[circumference_rectangle]") {
     min = {-5.5f, -5.5f};
     max = {-1.5f, -1.5f};
     expected = 16.0f;
+    r = {min, max, white};
+    result = r.circumference ();
+    REQUIRE (Approx(result) == expected);
+    // Rectangle (0, 0) (0, 0), color = 255, 255, 255
+    min = {0.0f, 0.0f};
+    max = {0.0f, 0.0f};
+    expected = 0.0f;
     r = {min, max, white};
     result = r.circumference ();
     REQUIRE (Approx(result) == expected);
