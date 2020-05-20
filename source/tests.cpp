@@ -312,21 +312,39 @@ TEST_CASE ("describe_mat2_operation_multiply", "[mat2_operation_multiply]") {
     //Matrix (2, 3, 4, 5) * (6, 7, 8, 9)
     Mat2 a {2.0f, 3.0f, 4.0f, 5.0f};
     Mat2 b {6.0f, 7.0f, 8.0f, 9.0f};
-    Mat2 c {36.0f, 41.0f, 64.0f, 73.0f};
+    Mat2 expected {36.0f, 41.0f, 64.0f, 73.0f};
     a *= b;
-    REQUIRE(Approx(a.e_00) == c.e_00);
-    REQUIRE(Approx(a.e_10) == c.e_10);
-    REQUIRE(Approx(a.e_01) == c.e_01);
-    REQUIRE(Approx(a.e_11) == c.e_11);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
     //Matrix (-2, 3.7, 4.2, -5) * (6.3, -7.5, 8.8, -9.2)
     a = {-2.0f, 3.7f, 4.2f, -5.0f};
     b = {6.3f, -7.5f, 8.8f, -9.2f};
-    c = {19.96f, -19.04f, -17.54f, 14.5f};
+    expected = {19.96f, -19.04f, -17.54f, 14.5f};
     a *= b;
-    REQUIRE(Approx(a.e_00) == c.e_00);
-    REQUIRE(Approx(a.e_10) == c.e_10);
-    REQUIRE(Approx(a.e_01) == c.e_01);
-    REQUIRE(Approx(a.e_11) == c.e_11);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
+    //Matrix (1, 1, 1, 1) * (6.3, -7.5, 8.8, -9.2)
+    a = {1.0f, 1.0f, 1.0f, 1.0f};
+    b = {1.0f, 2.0f, 3.0f, 4.0f};
+    expected = {4.0f, 6.0f, 4.0f, 6.0f};
+    a *= b;
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
+    //Matrix (-2, 3.7, 4.2, -5) * (0, 0, 0, 0)
+    a = {-2.0f, 3.7f, 4.2f, -5.0f};
+    b = {0.0f, 0.0f, 0.0f, 0.0f};
+    expected = {0.0f, 0.0f, 0.0f, 0.0f};
+    a *= b;
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
 }
 
 TEST_CASE ("describe_mat2_multiply_two_matrices", "[mat2_multiply_two_matrices]") {
@@ -334,27 +352,54 @@ TEST_CASE ("describe_mat2_multiply_two_matrices", "[mat2_multiply_two_matrices]"
     Mat2 a {2.0f, 3.0f, 4.0f, 5.0f};
     Mat2 b {6.0f, 7.0f, 8.0f, 9.0f};
     Mat2 c;
-    Mat2 d {36.0f, 41.0f, 64.0f, 73.0f};
+    Mat2 expected {36.0f, 41.0f, 64.0f, 73.0f};
     c = a * b;
-    REQUIRE(Approx(c.e_00) == d.e_00);
-    REQUIRE(Approx(c.e_10) == d.e_10);
-    REQUIRE(Approx(c.e_01) == d.e_01);
-    REQUIRE(Approx(c.e_11) == d.e_11);
+    REQUIRE(Approx(c.e_00) == expected.e_00);
+    REQUIRE(Approx(c.e_10) == expected.e_10);
+    REQUIRE(Approx(c.e_01) == expected.e_01);
+    REQUIRE(Approx(c.e_11) == expected.e_11);
     //Matrix (-2, 3.7, 4.2, -5) * (6.3, -7.5, 8.8, -9.2)
     a = {-2.0f, 3.7f, 4.2f, -5.0f};
     b = {6.3f, -7.5f, 8.8f, -9.2f};
-    d = {19.96f, -19.04f, -17.54f, 14.5f};
+    expected = {19.96f, -19.04f, -17.54f, 14.5f};
     c = a * b;
-    REQUIRE(Approx(c.e_00) == d.e_00);
-    REQUIRE(Approx(c.e_10) == d.e_10);
-    REQUIRE(Approx(c.e_01) == d.e_01);
-    REQUIRE(Approx(c.e_11) == d.e_11);
+    REQUIRE(Approx(c.e_00) == expected.e_00);
+    REQUIRE(Approx(c.e_10) == expected.e_10);
+    REQUIRE(Approx(c.e_01) == expected.e_01);
+    REQUIRE(Approx(c.e_11) == expected.e_11);
+    //Matrix (1, 1, 1, 1) * (6.3, -7.5, 8.8, -9.2)
+    a = {1.0f, 1.0f, 1.0f, 1.0f};
+    b = {1.0f, 2.0f, 3.0f, 4.0f};
+    expected = {4.0f, 6.0f, 4.0f, 6.0f};
+    c = a * b;
+    REQUIRE(Approx(c.e_00) == expected.e_00);
+    REQUIRE(Approx(c.e_10) == expected.e_10);
+    REQUIRE(Approx(c.e_01) == expected.e_01);
+    REQUIRE(Approx(c.e_11) == expected.e_11);
+    //Matrix (-2, 3.7, 4.2, -5) * (0, 0, 0, 0)
+    a = {-2.0f, 3.7f, 4.2f, -5.0f};
+    b = {0.0f, 0.0f, 0.0f, 0.0f};
+    expected = {0.0f, 0.0f, 0.0f, 0.0f};
+    c = a * b;
+    REQUIRE(Approx(c.e_00) == expected.e_00);
+    REQUIRE(Approx(c.e_10) == expected.e_10);
+    REQUIRE(Approx(c.e_01) == expected.e_01);
+    REQUIRE(Approx(c.e_11) == expected.e_11);
 }
 
 TEST_CASE ("describe_mat2_determinant", "[mat2_determinant]") {
     //Matrix (-2, -3.7, 4.2, -5)
     Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
     REQUIRE(Approx(a.det()) == 25.54f);
+    //Matrix (1, 1, 1, 1)
+    a = {1.0f, 1.0f, 1.0f, 1.0f};
+    REQUIRE(Approx(a.det()) == 0.0f);
+    //Matrix (0, 0, 0, 0)
+    a = {0.0f, 0.0f, 0.0f, 0.0f};
+    REQUIRE(Approx(a.det()) == 0.0f);
+    //Matrix (-2, 2, -2, 2)
+    a = {-2.0f, 2.0f, -2.0f, 2.0f};
+    REQUIRE(Approx(a.det()) == 0.0f);
 }
 
 TEST_CASE ("describe_mat2_matrix_multiply_vector", "[mat2_matrix_multiply_vector]") {
@@ -363,6 +408,27 @@ TEST_CASE ("describe_mat2_matrix_multiply_vector", "[mat2_matrix_multiply_vector
     Vec2 v {-2.4f, 3.6f};
     Vec2 result;
     Vec2 expected {-8.52f, -28.08f};
+    result = a * v;
+    REQUIRE(Approx(result.x) == expected.x);
+    REQUIRE(Approx(result.y) == expected.y);
+    //Matrix (-2, -3.7, 4.2, -5) * (0, 0)
+    a = {-2.0f, -3.7f, 4.2f, -5.0f};
+    v = {0.0f, 0.0f};
+    expected = {0.0f, 0.0f};
+    result = a * v;
+    REQUIRE(Approx(result.x) == expected.x);
+    REQUIRE(Approx(result.y) == expected.y);
+    //Matrix (-2, -3.7, 4.2, -5) * (-1, -1)
+    a = {-2.0f, -3.7f, 4.2f, -5.0f};
+    v = {-1.0, -1.0f};
+    expected = {5.7f, 0.8f};
+    result = a * v;
+    REQUIRE(Approx(result.x) == expected.x);
+    REQUIRE(Approx(result.y) == expected.y);
+    //Matrix (-2, -3.7, 4.2, -5) * (1, 1)
+    a = {-2.0f, -3.7f, 4.2f, -5.0f};
+    v = {1.0f, 1.0f};
+    expected = {-5.7f, -0.8f};
     result = a * v;
     REQUIRE(Approx(result.x) == expected.x);
     REQUIRE(Approx(result.y) == expected.y);
@@ -388,6 +454,30 @@ TEST_CASE ("describe_mat2_inverse", "[mat2_inverse]") {
     REQUIRE(Approx(a.e_10) == expected.e_10);
     REQUIRE(Approx(a.e_01) == expected.e_01);
     REQUIRE(Approx(a.e_11) == expected.e_11);
+    //Matrix (0, 1, 2, 3)
+    a = {0.0f, 1.0f, 2.0f, 3.0f};
+    expected = {-1.5f, 0.5f, 1.0f, 0.0f};
+    a = inverse (a);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
+    //Matrix (1, -1, -1, -1)
+    a = {1.0f, -1.0f, -1.0f, -1.0f};
+    expected = {0.5f, -0.5f, -0.5f, -0.5f};
+    a = inverse (a);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
+    //Matrix (-3, -2, -1, 0)
+    a = {-3.0f, -2.0f, -1.0f, 0.0f};
+    expected = {0.0f, -1.0f, -0.5f, 1.5f};
+    a = inverse (a);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
 }
 
 TEST_CASE ("describe_mat2_transpose", "[mat2_transpose]") {
@@ -399,13 +489,37 @@ TEST_CASE ("describe_mat2_transpose", "[mat2_transpose]") {
     REQUIRE(Approx(a.e_10) == expected.e_10);
     REQUIRE(Approx(a.e_01) == expected.e_01);
     REQUIRE(Approx(a.e_11) == expected.e_11);
+    //Matrix (1, 1, 1, 1)
+    a = {1.0f, 1.0f, 1.0f, 1.0f};
+    expected = {1.0f, 1.0f, 1.0f, 1.0f};
+    a = transpose (a);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
+    //Matrix (-2, -1, 0, 1)
+    a = {-2.0f, -1.0f, 0.0f, 1.0f};
+    expected = {-2.0f, 0.0f, -1.0f, 1.0f};
+    a = transpose (a);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
+    //Matrix (-2, -3.7, 4.2, -5)
+    a = {22.3f, 0.0f, 0.0f, -55.0f};
+    expected = {22.3f, 0.0f, 0.0f, -55.0f};
+    a = transpose (a);
+    REQUIRE(Approx(a.e_00) == expected.e_00);
+    REQUIRE(Approx(a.e_10) == expected.e_10);
+    REQUIRE(Approx(a.e_01) == expected.e_01);
+    REQUIRE(Approx(a.e_11) == expected.e_11);
 }
 
 TEST_CASE ("describe_mat2_rotation", "[mat2_rotation]") {
     //phi 2* PI = 360 degrees
     float phi = 2 * M_PI;
     Mat2 result;
-    Mat2 expected {-0.28369f, -0.95891f, 0.95891f, -0.28369f};
+    Mat2 expected {1.0f, 0.0f, 0.0f, 1.0f};
     result = make_rotation_mat2 (phi);
     REQUIRE(Approx(result.e_00) == expected.e_00);
     REQUIRE(Approx(result.e_10) == expected.e_10);
@@ -413,7 +527,23 @@ TEST_CASE ("describe_mat2_rotation", "[mat2_rotation]") {
     REQUIRE(Approx(result.e_11) == expected.e_11);
     //phi PI = 180 degrees
     phi = M_PI;
-    expected = {-0.59846f, 0.80115f, -0.80115f, -0.59846f};
+    expected = {-1.0f, 0.0f, 0.0f, -1.0};
+    result = make_rotation_mat2 (phi);
+    REQUIRE(Approx(result.e_00) == expected.e_00);
+    REQUIRE(Approx(result.e_10) == expected.e_10);
+    REQUIRE(Approx(result.e_01) == expected.e_01);
+    REQUIRE(Approx(result.e_11) == expected.e_11);
+    //phi PI / 4 = 45 degrees
+    phi = M_PI / 4;
+    expected = {0.70710f, -0.70710f, 0.70710f, 0.70710f};
+    result = make_rotation_mat2 (phi);
+    REQUIRE(Approx(result.e_00) == expected.e_00);
+    REQUIRE(Approx(result.e_10) == expected.e_10);
+    REQUIRE(Approx(result.e_01) == expected.e_01);
+    REQUIRE(Approx(result.e_11) == expected.e_11);
+    //phi 0 = 0 degrees
+    phi = 0;
+    expected = {1.0f, 0.0f, 0.0f, 1.0f};
     result = make_rotation_mat2 (phi);
     REQUIRE(Approx(result.e_00) == expected.e_00);
     REQUIRE(Approx(result.e_10) == expected.e_10);
