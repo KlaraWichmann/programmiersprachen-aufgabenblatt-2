@@ -279,24 +279,24 @@ TEST_CASE ("describe_devide_two_Vec2", "[vec2_devide_two_Vec2]") {
     Vec2 a {1.0f, 0.0f};
     float s = 1.0f;
     Vec2 c;
-    Vec2 d {1.0f, 0.0f};
+    Vec2 expected {1.0f, 0.0f};
     c = a / s;
-    REQUIRE(Approx(c.x) == d.x);
-    REQUIRE(Approx(c.y) == d.y);
+    REQUIRE(Approx(c.x) == expected.x);
+    REQUIRE(Approx(c.y) == expected.y);
     //Vector (-1.5, 5.7) / 1.5
     a = {-1.5f, 5.7f};
     s = 1.5f;
-    d = {-1.0f, 3.8f};
+    expected = {-1.0f, 3.8f};
     c = a / s;
-    REQUIRE(Approx(c.x) == d.x);
-    REQUIRE(Approx(c.y) == d.y);
+    REQUIRE(Approx(c.x) == expected.x);
+    REQUIRE(Approx(c.y) == expected.y);
     //Vector (-1.5, 5.7) / -1.5
     a = {-1.5f, 5.7f};
     s = -1.5f;
-    d = {1.0f, -3.8f};
+    expected = {1.0f, -3.8f};
     c = a / s;
-    REQUIRE(Approx(c.x) == d.x);
-    REQUIRE(Approx(c.y) == d.y);
+    REQUIRE(Approx(c.x) == expected.x);
+    REQUIRE(Approx(c.y) == expected.y);
     //Vector (1.1, 2.2) /= 0.0
      a = {1.1f, 2.2f};
      s = 0.0f;
