@@ -12,6 +12,12 @@ TEST_CASE ("describe_vec2", "[vec2]") {
     Vec2 b {5.1f, -9.3f}; /* requires that 5.1f == Approx(b.x) and -9.3f == Approx(b.y)*/
     REQUIRE (Approx(b.x) == 5.1f);
     REQUIRE (Approx(b.y) == -9.3f);
+    b = {-15.21f, 5.3f}; /* requires that -15.21f == Approx(b.x) and 5.3f == Approx(b.y)*/
+    REQUIRE (Approx(b.x) == -15.21f);
+    REQUIRE (Approx(b.y) == 5.3f);
+    b = {0.0f, -1.3f}; /* requires that 0.0f == Approx(b.x) and -1.3f == Approx(b.y)*/
+    REQUIRE (Approx(b.x) == 0.0f);
+    REQUIRE (Approx(b.y) == -1.3f);
 }
 
 TEST_CASE ("describe_vec2_operation_add", "[vec2_operation_add]") {
