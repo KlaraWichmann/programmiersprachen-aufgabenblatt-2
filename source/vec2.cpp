@@ -2,6 +2,8 @@
 #include <iostream>
 #include "vec2.hpp"
 
+//member methods
+
 Vec2& Vec2::operator+= (Vec2 const& v) {
     x += v.x;
     y += v.y;
@@ -28,6 +30,8 @@ Vec2& Vec2::operator/= (float s) {
     y /= s;
     return *this;
 }
+
+//free methods
 
 Vec2 operator+ (Vec2 const& u, Vec2 const& v) {
     Vec2 result {u};

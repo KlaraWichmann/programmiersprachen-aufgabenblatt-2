@@ -6,6 +6,7 @@
 #include "color.hpp"
 #include "window.hpp"
 
+//circle object containing a radius, center and color
 class Circle {
     public:
         Circle (float r, Vec2 centr, Color const& clr);
@@ -20,6 +21,7 @@ class Circle {
         Color highlight_color_ {1.0f, 1.0f, 0.0f};
 };
 
+//rectangle object containing a minimum vector (bottom left), a maximum vector (top right) and a color
 class Rectangle {
     public:
         Rectangle () = default;

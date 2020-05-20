@@ -19,6 +19,7 @@ add_executable(clock
   glew.c
   clock.cpp
   shapes.cpp
+  mat2.cpp
   )
 target_link_libraries(clock
   glfw

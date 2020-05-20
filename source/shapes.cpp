@@ -2,18 +2,23 @@
 
 #include <iostream>
 
+//circle methods
+
+//initializing circle constructor with list
 Circle::Circle (float r, Vec2 centr, Color const& clr):
     radius_ {r},
     center_ {centr},
     color_ {clr}
 {}
 
+//determines the circumference of the rectangle
 float Circle::circumference() const {
     float result = 0.0f;
     result = 2 * M_PI * radius_;
     return result;
 }
 
+//draws a circle in a given window
 void Circle::draw (Window const& win) const {
     float temp_x = center_.x + cos(1 * (M_PI/180)) * radius_;
     float temp_y = center_.x + sin(1 * (M_PI/180)) * radius_;
@@ -27,6 +32,7 @@ void Circle::draw (Window const& win) const {
     }
 }
 
+//draws a circle in a given window and if highlight is true in the highlighted color
 void Circle::draw (Window const& win, bool highlight) const {
     Color clr;
     if (highlight) {
@@ -46,6 +52,7 @@ void Circle::draw (Window const& win, bool highlight) const {
     }
 }
 
+//checks if given vector is in circle
 bool Circle::is_inside (Vec2 const& v) {
     Vec2 min {center_.x - radius_, center_.y - radius_};
     Vec2 max {center_.x + radius_, center_.y + radius_};
@@ -55,13 +62,16 @@ bool Circle::is_inside (Vec2 const& v) {
     return false;
 }
 
+//rectangle methods
 
+//initializes rectangle constructor with list
 Rectangle::Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr):
     min_ {minimum},
     max_ {maximum},
     color_ {clr}
 {}
 
+//determines the circumference of the rectangle
 float Rectangle::circumference() const {
     float result = 0.0f;
     float width = max_.x - min_.x;
@@ -70,6 +80,7 @@ float Rectangle::circumference() const {
     return result;
 }
 
+//draws the rectangle in a given window
 void Rectangle::draw (Window const& win) const {
     win.draw_line (min_.x, min_.y,
                       max_.x, min_.y,
@@ -89,6 +100,7 @@ void Rectangle::draw (Window const& win) const {
                       1.0f);
 }
 
+//draws a rectangle in a given window and if highlight is true in the highlighted color
 void Rectangle::draw (Window const& win, bool highlight) const {
     Color clr;
     if (highlight) {
@@ -115,6 +127,7 @@ void Rectangle::draw (Window const& win, bool highlight) const {
                       1.0f);
 }
 
+//checks if given vector is in rectangle
 bool Rectangle::is_inside (Vec2 const& v) {
     if (v.x >= min_.x && v.x <= max_.x && v.y >= min_.y && v.y <= max_.y) {
         return true;
