@@ -55,48 +55,62 @@ TEST_CASE ("describe_vec2_operation_sub", "[vec2_operation_sub]") {
     //Vector (1, 0) - (0, 0)
     Vec2 a {1.0f, 0.0f};
     Vec2 b {0.0f, 0.0f};
-    Vec2 c {1.0f, 0.0f};
+    Vec2 expected {1.0f, 0.0f};
     a -= b;
-    REQUIRE(Approx(a.x) == c.x);
-    REQUIRE(Approx(a.y) == c.y);
+    REQUIRE(Approx(a.x) == expected.x);
+    REQUIRE(Approx(a.y) == expected.y);
     //Vector (5.1, -9.3) - (-5.1, 9.3)
     a = {5.1f, -9.3f};
     b = {-5.1f, 9.3f};
-    c = {10.2f, -18.6f};
+    expected = {10.2f, -18.6f};
     a -= b;
-    REQUIRE(Approx(a.x) == c.x);
-    REQUIRE(Approx(a.y) == c.y);
+    REQUIRE(Approx(a.x) == expected.x);
+    REQUIRE(Approx(a.y) == expected.y);
     //Vector (1.1, 2.2) - (3.3, 4.4)
      a = {1.1f, 2.2f};
      b = {3.3f, 4.4f};
-     c = {-2.2f, -2.2f};
+     expected = {-2.2f, -2.2f};
      a -= b;
-     REQUIRE(Approx(a.x) == c.x);
-     REQUIRE(Approx(a.y) == c.y);
+     REQUIRE(Approx(a.x) == expected.x);
+     REQUIRE(Approx(a.y) == expected.y);
+    //Vector (0.0, 0.0) - (3.3, 4.4)
+    a = {0.0f, 0.0f};
+    b = {3.3f, 4.4f};
+    expected = {-3.3f, -4.4f};
+    a -= b;
+    REQUIRE(Approx(a.x) == expected.x);
+    REQUIRE(Approx(a.y) == expected.y);
 }
 
 TEST_CASE ("describe_vec2_operation_multiply", "[vec2_operation_multiply]") {
     //Vector (1, 0) * 0
     Vec2 a {1.0f, 0.0f};
     float s = 0.0f;
-    Vec2 c {0.0f, 0.0f};
+    Vec2 expected {0.0f, 0.0f};
     a *= s;
-    REQUIRE(Approx(a.x) == c.x);
-    REQUIRE(Approx(a.y) == c.y);
+    REQUIRE(Approx(a.x) == expected.x);
+    REQUIRE(Approx(a.y) == expected.y);
     //Vector (5.1, -9.3) * -9.3
     a = {5.1f, -9.3f};
     s = -9.3f;
-    c = {-47.43f, 86.49f};
+    expected = {-47.43f, 86.49f};
     a *= s;
-    REQUIRE(Approx(a.x) == c.x);
-    REQUIRE(Approx(a.y) == c.y);
+    REQUIRE(Approx(a.x) == expected.x);
+    REQUIRE(Approx(a.y) == expected.y);
     //Vector (1.1, 2.2) * 4.0
      a = {1.1f, 2.2f};
      s = 4.0f;
-     c = {4.4f, 8.8f};
+     expected = {4.4f, 8.8f};
      a *= s;
-     REQUIRE(Approx(a.x) == c.x);
-     REQUIRE(Approx(a.y) == c.y);
+     REQUIRE(Approx(a.x) == expected.x);
+     REQUIRE(Approx(a.y) == expected.y);
+    //Vector (1.1, 2.2) * 1.0
+    a = {1.1f, 2.2f};
+    s = 1.0f;
+    expected = {1.1f, 2.2f};
+    a *= s;
+    REQUIRE(Approx(a.x) == expected.x);
+    REQUIRE(Approx(a.y) == expected.y);
 }
 
 TEST_CASE ("describe_vec2_operation_devide", "[vec2_operation_devide]") {
