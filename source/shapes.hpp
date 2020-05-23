@@ -2,7 +2,7 @@
 #define SHAPES_HPP
 
 #include <math.h>
-#include "vec2.hpp"
+#include "mat2.hpp"
 #include "color.hpp"
 #include "window.hpp"
 
@@ -11,8 +11,7 @@ class Circle {
     public:
         Circle (float r, Vec2 centr, Color const& clr);
         float circumference() const;
-        void draw (Window const& win) const;
-        void draw (Window const& win, bool highlight) const;
+        void draw (Window const& win, bool highlight = false) const;
         bool is_inside (Vec2 const& v);
     private:
         float radius_ = 0.0f;
@@ -27,8 +26,7 @@ class Rectangle {
         Rectangle () = default;
         Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr);
         float circumference() const;
-        void draw (Window const& win) const;
-        void draw (Window const& win, bool highlight) const;
+        void draw (Window const& win, bool highlight = false) const;
         bool is_inside (Vec2 const& v);
     private:
         Vec2 min_;

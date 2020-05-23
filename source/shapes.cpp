@@ -1,4 +1,5 @@
 #include "shapes.hpp"
+#include "vec2.hpp"
 
 #include <iostream>
 
@@ -18,19 +19,21 @@ float Circle::circumference() const {
     return result;
 }
 
-//draws a circle in a given window
-void Circle::draw (Window const& win) const {
-    float temp_x = center_.x + cos(1 * (M_PI/180)) * radius_;
-    float temp_y = center_.x + sin(1 * (M_PI/180)) * radius_;
-    for (int i = 2; i <= 360; i++) {
-         win.draw_line (temp_x, temp_y,
-                        center_.x + cos(i * (M_PI/180)) * radius_, center_.x + sin(i * (M_PI/180)) * radius_,
-                        color_.r, color_.g, color_.b,
-                        1.0f);
-        temp_x = center_.x + cos(i * (M_PI/180)) * radius_;
-        temp_y = center_.x + sin(i * (M_PI/180)) * radius_;
+/*
+    int count_segments = 120;
+    float phi = ((360 / count_segments) * (M_PI / 180));
+    Vec2 start {0.0f + radius_, 0.0f + radius_};
+    Vec2 end;
+    for (int i = 1; i <= count_segments; i++) {
+        end = start;
+        end = end * make_rotation_mat2(phi);
+        win.draw_line (start.x + center_.x, start.y + center_.y,
+                       end.x + center_.y, end.y + center_.y,
+                       color_.r, color_.g, color_.b,
+                       1.0f);
+       start = end;
     }
-}
+*/
 
 //draws a circle in a given window and if highlight is true in the highlighted color
 void Circle::draw (Window const& win, bool highlight) const {
@@ -78,26 +81,6 @@ float Rectangle::circumference() const {
     float height = max_.y - min_.y;
     result = 2 * width + 2 * height;
     return result;
-}
-
-//draws the rectangle in a given window
-void Rectangle::draw (Window const& win) const {
-    win.draw_line (min_.x, min_.y,
-                      max_.x, min_.y,
-                      color_.r, color_.g, color_.b,
-                      1.0f);
-    win.draw_line (max_.x, min_.y,
-                      max_.x, max_.y,
-                      color_.r, color_.g, color_.b,
-                      1.0f);
-    win.draw_line (max_.x, max_.y,
-                      min_.x, max_.y,
-                      color_.r, color_.g, color_.b,
-                      1.0f);
-    win.draw_line (min_.x, max_.y,
-                      min_.x, min_.y,
-                      color_.r, color_.g, color_.b,
-                      1.0f);
 }
 
 //draws a rectangle in a given window and if highlight is true in the highlighted color
