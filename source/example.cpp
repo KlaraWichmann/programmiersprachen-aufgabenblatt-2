@@ -18,7 +18,8 @@ int main(int argc, char* argv[])
     //rectangle objects saved as a vector
     std::vector<Rectangle> rec = {
         {Vec2 {0.0f, 0.0f}, Vec2 {100.0f, 100.0f}, Color {1.0f, 1.0f, 1.0f}},
-        {Vec2 {100.0f, 50.0f}, Vec2 {200.0f, 300.0f}, Color {1.0f, 1.0f, 1.0f}}
+        {Vec2 {100.0f, 50.0f}, Vec2 {200.0f, 300.0f}, Color {1.0f, 1.0f, 1.0f}},
+        {Vec2 {100.0f, 50.0f}, Vec2 {400.0f, 400.0f}, Color {1.0f, 1.0f, 1.0f}}
     };
     
     
@@ -70,33 +71,32 @@ int main(int argc, char* argv[])
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
       
-      //see if mouse position is in the first rectangle, if true set reactangle to highlight color
+      //see if mouse position is in the rectangle object, if true set reactangle to highlight color
       float x_rectangle = 0.0f;
       float y_rectangle = 0.0f;
       std::tie (x_rectangle, y_rectangle) = win.mouse_position();
       Vec2 mouse_rec {x_rectangle, y_rectangle};
-      if (rec[0].is_inside (mouse_rec)) {
-          rec[0].draw (win, true);
-      } else {
-          rec[0].draw (win);
+      
+      for (int i = 0; i < rec.size(); i++) {
+          if (rec[i].is_inside (mouse_rec)) {
+              rec[i].draw (win, true);
+          } else {
+              rec[i].draw (win);
+          }
       }
       
-      //draw second rectangle in vector
-      rec[1].draw (win, true);
-      
-      //see if mouse position is in the first circle, if true set circle to highlight color
+      //see if mouse position is in circle object, if true set circle to highlight color
       float x_circle = 0.0f;
       float y_circle = 0.0f;
       std::tie (x_circle, y_circle) = win.mouse_position();
       Vec2 mouse_circle {x_circle, y_circle};
-      if (cir[0].is_inside (mouse_circle)) {
-          cir[0].draw (win, true);
-      } else {
-          cir[0].draw (win);
+      for (int i = 0; i < cir.size(); i++) {
+          if (cir[i].is_inside (mouse_circle)) {
+              cir[i].draw (win, true);
+          } else {
+              cir[i].draw (win);
+          }
       }
-      
-      //draw second circle in vector
-      cir[1].draw (win, true);
       
     win.update();
   }
