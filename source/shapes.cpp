@@ -17,22 +17,6 @@ float Circle::circumference() const {
     return result;
 }
 
-/*
-    int count_segments = 120;
-    float phi = ((360 / count_segments) * (M_PI / 180));
-    Vec2 start {0.0f + radius_, 0.0f + radius_};
-    Vec2 end;
-    for (int i = 1; i <= count_segments; i++) {
-        end = start;
-        end = end * make_rotation_mat2(phi);
-        win.draw_line (start.x + center_.x, start.y + center_.y,
-                       end.x + center_.y, end.y + center_.y,
-                       clr.r, clr.g, clr.b,
-                       1.0f);
-       start = end;
-    }
-*/
-
 //draws a circle in a given window and if highlight is true in the highlighted color
 void Circle::draw (Window const& win, bool highlight) const {
     Color clr;
@@ -42,35 +26,19 @@ void Circle::draw (Window const& win, bool highlight) const {
         clr = color_;
     }
     
-    int count_segments = 80;
+    float count_segments = 70.0f;
     float phi = ((360 / count_segments) * (M_PI / 180));
-    Vec2 start {0.0f + radius_, 0.0f + radius_};
+    Vec2 start {0.0f, radius_};
     Vec2 end;
-    //win.draw_point(center_.x, center_.y, clr.r, clr.g, clr.b);
     for (int i = 0; i <= count_segments; i++) {
         end = start;
         end = end * make_rotation_mat2(phi);
         win.draw_line (start.x + center_.x, start.y + center_.y,
-                       end.x + center_.y, end.y + center_.y,
+                       end.x + center_.x, end.y + center_.y,
                        clr.r, clr.g, clr.b,
                        1.0f);
        start = end;
     }
-    
-    
-    /*
-    float temp_x = center_.x + cos(1 * (M_PI/180)) * radius_;
-    float temp_y = center_.x + sin(1 * (M_PI/180)) * radius_;
-    for (int i = 2; i <= 360; i++) {
-         win.draw_line (temp_x, temp_y,
-                        center_.x + cos(i * (M_PI/180)) * radius_, center_.x + sin(i * (M_PI/180)) * radius_,
-                        clr.r, clr.g, clr.b,
-                        1.0f);
-        temp_x = center_.x + cos(i * (M_PI/180)) * radius_;
-        temp_y = center_.x + sin(i * (M_PI/180)) * radius_;
-    }
-     */
-    
 }
 
 //checks if given vector is in circle

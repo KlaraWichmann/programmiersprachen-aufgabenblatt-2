@@ -32,9 +32,9 @@ int main(int argc, char* argv[])
       
       // 3 verschiedene rotationsmatrizen
     
-      rotation_sec = make_rotation_mat2 (t / 10);
-      rotation_min = make_rotation_mat2 (t / 100);
-      rotation_hour = make_rotation_mat2 (t / 1000);
+      rotation_sec = make_rotation_mat2 (t * 2 * M_PI / 60.0f);
+      rotation_min = make_rotation_mat2 (t * 2 * M_PI / 60.0f / 60.0f);
+      rotation_hour = make_rotation_mat2 (t * 2 * M_PI / 60.0f / 60.0f / 60.0f);
     
 
       float sec_x = 0.f + 250.f;
