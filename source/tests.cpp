@@ -1,9 +1,6 @@
 #define CATCH_CONFIG_RUNNER
-#include <catch.hpp>
-#include "vec2.hpp"
-#include "mat2.hpp"
-#include "color.hpp"
 #include "shapes.hpp"
+#include <catch.hpp>
 
 
 TEST_CASE ("describe_vec2", "[vec2]") {

@@ -1,6 +1,9 @@
 #ifndef VEC2_HPP
 #define VEC2_HPP
 
+#include <exception>
+#include <iostream>
+
 // Vec2 data type definition
 struct Vec2 {
     float x = 0.0f;

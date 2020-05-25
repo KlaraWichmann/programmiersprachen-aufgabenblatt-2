@@ -5,7 +5,6 @@
 #include <math.h>
 
 // Mat2 definition
-#include <array>
 struct Mat2 {
     // matrix layout:
     // e_00 e_10

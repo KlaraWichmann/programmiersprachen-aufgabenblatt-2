@@ -3,8 +3,6 @@
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
-#include <iostream>
-#include <vector>
 #include <array>
 
 

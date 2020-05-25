@@ -1,7 +1,4 @@
 #include "shapes.hpp"
-#include "vec2.hpp"
-
-#include <iostream>
 
 //circle methods
 

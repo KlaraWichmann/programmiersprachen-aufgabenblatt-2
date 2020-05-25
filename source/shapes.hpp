@@ -1,10 +1,10 @@
 #ifndef SHAPES_HPP
 #define SHAPES_HPP
 
-#include <math.h>
 #include "mat2.hpp"
 #include "color.hpp"
 #include "window.hpp"
+#include <math.h>
 
 //circle object containing a radius, center and color
 class Circle {

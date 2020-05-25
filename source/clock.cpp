@@ -1,10 +1,6 @@
-#include "window.hpp"
 #include "shapes.hpp"
-#include "mat2.hpp"
 #include <GLFW/glfw3.h>
 #include <utility>
-#include <cmath>
-#include <iostream>
 #include <vector>
 
 

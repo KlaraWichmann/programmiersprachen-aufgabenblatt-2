@@ -1,6 +1,5 @@
-#include <exception>
-#include <iostream>
 #include "vec2.hpp"
+
 
 //member methods
 

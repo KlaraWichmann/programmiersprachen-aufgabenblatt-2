@@ -1,5 +1,4 @@
 #include "mat2.hpp"
-#include <iostream>
 
 //member functions
 
@@ -22,7 +21,6 @@ float Mat2::det() const {
 }
 
 
-//free functions
 
 Mat2 operator* (Mat2 const& m1, Mat2 const& m2) {
     Mat2 result {m1};
