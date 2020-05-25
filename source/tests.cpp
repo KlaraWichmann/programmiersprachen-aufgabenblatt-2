@@ -571,23 +571,23 @@ TEST_CASE ("describe_circumference_circle", "[circumference_circle]") {
     // Circle r = 2.5, color = 255, 255, 255
     Color white {0.0f, 0.0f, 0.0f};
     Vec2 ctr;
-    Circle a {2.5f, ctr, white};
+    Circle a {2.5f, ctr, white, white};
     float result = 0.0f;
     float expected = 15.70796f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);
     // Circle r = -3.7, color = 255, 255, 255
-    a = {-3.7f, ctr, white};
+    a = {-3.7f, ctr, white, white};
     expected = -23.24778f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);
     // Circle r = 0, color = 255, 255, 255
-    a =  {0.0f, ctr, white};
+    a =  {0.0f, ctr, white, white};
     expected = 0.0f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);
     // Circle r = 1.0, color = 255, 255, 255
-    a =  {1.0f, ctr, white};
+    a =  {1.0f, ctr, white, white};
     expected = 6.28318f;
     result = a.circumference ();
     REQUIRE (Approx(result) == expected);
@@ -601,35 +601,35 @@ TEST_CASE ("describe_circumference_rectangle", "[circumference_rectangle]") {
     Vec2 min {0.0f, 0.0f};
     float result = 0.0f;
     float expected = 4.0f;
-    Rectangle r {min, max, white};
+    Rectangle r {min, max, white, white};
     result = r.circumference ();
     REQUIRE (Approx(result) == expected);
     // Rectangle (-5.5, 10.5) (5.5, 20.3), color = 255, 255, 255
     min = {-5.5f, 10.5f};
     max = {5.5f, 20.3f};
     expected = 41.6f;
-    r = {min, max, white};
+    r = {min, max, white, white};
     result = r.circumference ();
     REQUIRE (Approx(result) == expected);
     // Rectangle (-5.5, -5.5) (-1.5, -1.5), color = 255, 255, 255
     min = {-5.5f, -5.5f};
     max = {-1.5f, -1.5f};
     expected = 16.0f;
-    r = {min, max, white};
+    r = {min, max, white, white};
     result = r.circumference ();
     REQUIRE (Approx(result) == expected);
     // Rectangle (0, 0) (0, 0), color = 255, 255, 255
     min = {0.0f, 0.0f};
     max = {0.0f, 0.0f};
     expected = 0.0f;
-    r = {min, max, white};
+    r = {min, max, white, white};
     result = r.circumference ();
     REQUIRE (Approx(result) == expected);
 }
 
 TEST_CASE ("describe_is_inside_circle", "[is_inside_circle]") {
     Color white {0.0f, 0.0f, 0.0f};
-    Circle c {2.5f, Vec2 {0.0f, 0.0f}, white};
+    Circle c {2.5f, Vec2 {0.0f, 0.0f}, white, white};
     //Vec (20, 20)
     Vec2 v {20.0f, 20.0f};
     REQUIRE (c.is_inside (v) == false);
@@ -648,7 +648,7 @@ TEST_CASE ("describe_is_inside_rectangle", "[is_inside_rectangle]") {
     Color white {0.0f, 0.0f, 0.0f};
     Vec2 max {10.0f, 10.0f};
     Vec2 min {0.0f, 0.0f};
-    Rectangle rec {min, max, white};
+    Rectangle rec {min, max, white, white};
     //Vec (20, 20)
     Vec2 v {20.0f, 20.0f};
     REQUIRE (rec.is_inside (v) == false);

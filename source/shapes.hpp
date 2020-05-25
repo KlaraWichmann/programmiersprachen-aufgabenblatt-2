@@ -9,7 +9,7 @@
 //circle object containing a radius, center and color
 class Circle {
     public:
-        Circle (float r, Vec2 centr, Color const& clr);
+        Circle (float r, Vec2 centr, Color const& clr, Color const& highlight_clr);
         float circumference() const;
         void draw (Window const& win, bool highlight = false) const;
         bool is_inside (Vec2 const& v);
@@ -17,14 +17,14 @@ class Circle {
         float radius_ = 0.0f;
         Vec2 center_;
         Color color_;
-        Color highlight_color_ {1.0f, 1.0f, 0.0f};
+        Color highlight_color_;
 };
 
 //rectangle object containing a minimum vector (bottom left), a maximum vector (top right) and a color
 class Rectangle {
     public:
         Rectangle () = default;
-        Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr);
+        Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr, Color const& highlight_clr);
         float circumference() const;
         void draw (Window const& win, bool highlight = false) const;
         bool is_inside (Vec2 const& v);
@@ -32,7 +32,7 @@ class Rectangle {
         Vec2 min_;
         Vec2 max_;
         Color color_;
-        Color highlight_color_ {1.0f, 1.0f, 0.0f};
+        Color highlight_color_;
 };
 
 

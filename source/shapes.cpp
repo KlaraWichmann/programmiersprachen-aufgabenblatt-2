@@ -3,10 +3,11 @@
 //circle methods
 
 //initializing circle constructor with list
-Circle::Circle (float r, Vec2 centr, Color const& clr):
+Circle::Circle (float r, Vec2 centr, Color const& clr, Color const& highlight_clr):
     radius_ {r},
     center_ {centr},
-    color_ {clr}
+    color_ {clr},
+    highlight_color_ {highlight_clr}
 {}
 
 //determines the circumference of the rectangle
@@ -85,10 +86,11 @@ bool Circle::is_inside (Vec2 const& v) {
 //rectangle methods
 
 //initializes rectangle constructor with list
-Rectangle::Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr):
+Rectangle::Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr, Color const& highlight_clr):
     min_ {minimum},
     max_ {maximum},
-    color_ {clr}
+    color_ {clr},
+    highlight_color_ {highlight_clr}
 {}
 
 //determines the circumference of the rectangle

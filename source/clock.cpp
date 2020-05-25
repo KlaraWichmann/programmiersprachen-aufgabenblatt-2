@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     
   Window win{std::make_pair(800,800)};
     
-    Circle c {370.0f, Vec2 {400.0f, 400.0f}, Color {1.0f, 1.0f, 1.0f}};
+    Circle c {370.0f, Vec2 {400.0f, 400.0f}, Color {1.0f, 1.0f, 1.0f}, Color  {1.0f, 1.0f, 0.0f}};
     
     Mat2 rotation_sec;
     Mat2 rotation_min;
