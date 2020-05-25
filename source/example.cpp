@@ -5,22 +5,23 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+#include <array>
 
 
 int main(int argc, char* argv[])
 {
-    //circle objects saved as a vector
-    std::vector<Circle> cir = {
+    //circle objects saved in an array
+    std::array<Circle, 2> cir = {{
         {100.0f, Vec2 {200.0f, 200.0f}, Color {1.0f, 1.0f, 1.0f}},
         {100.0f, Vec2 {400.0f, 400.0f}, Color {1.0f, 1.0f, 1.0f}}
-    };
+    }};
     
-    //rectangle objects saved as a vector
-    std::vector<Rectangle> rec = {
+    //rectangle objects saved in an array
+    std::array<Rectangle, 3> rec = {{
         {Vec2 {0.0f, 0.0f}, Vec2 {100.0f, 100.0f}, Color {1.0f, 1.0f, 1.0f}},
         {Vec2 {100.0f, 50.0f}, Vec2 {200.0f, 300.0f}, Color {1.0f, 1.0f, 1.0f}},
-        {Vec2 {100.0f, 50.0f}, Vec2 {400.0f, 400.0f}, Color {1.0f, 1.0f, 1.0f}}
-    };
+        {Vec2 {100.0f, 50.0f}, Vec2 {300.0f, 300.0f}, Color {1.0f, 1.0f, 1.0f}}
+    }};
     
     
   Window win{std::make_pair(800,800)};
