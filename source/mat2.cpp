@@ -46,10 +46,10 @@ Vec2 operator* (Vec2 const& v, Mat2 const& m) {
 
 Mat2 inverse (Mat2 const& m) {
     Mat2 result;
-    result.e_00 = m.e_11 * 1 / m.det();
-    result.e_10 = -m.e_10 * 1 / m.det();
-    result.e_01 = -m.e_01 * 1 / m.det();
-    result.e_11 = m.e_00 * 1 / m.det();
+    result.e_00 = m.e_11;
+    result.e_10 = -m.e_10;
+    result.e_01 = -m.e_01;
+    result.e_11 = m.e_00;
     return result;
 }
 

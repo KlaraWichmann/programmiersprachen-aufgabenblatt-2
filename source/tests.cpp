@@ -445,7 +445,7 @@ TEST_CASE ("describe_mat2_vector_multiply_matrix", "[mat2_vector_multiply_matrix
 TEST_CASE ("describe_mat2_inverse", "[mat2_inverse]") {
     //Matrix (-2, -3.7, 4.2, -5)
     Mat2 a {-2.0f, -3.7f, 4.2f, -5.0f};
-    Mat2 expected {-0.19577f, 0.14487f, -0.16444f, -0.07830f};
+    Mat2 expected {-5.0f, 3.7f, -4.2f, -2.0f};
     a = inverse (a);
     REQUIRE(Approx(a.e_00) == expected.e_00);
     REQUIRE(Approx(a.e_10) == expected.e_10);
@@ -453,7 +453,7 @@ TEST_CASE ("describe_mat2_inverse", "[mat2_inverse]") {
     REQUIRE(Approx(a.e_11) == expected.e_11);
     //Matrix (0, 1, 2, 3)
     a = {0.0f, 1.0f, 2.0f, 3.0f};
-    expected = {-1.5f, 0.5f, 1.0f, 0.0f};
+    expected = {3.0f, -1.0f, -2.0f, 0.0f};
     a = inverse (a);
     REQUIRE(Approx(a.e_00) == expected.e_00);
     REQUIRE(Approx(a.e_10) == expected.e_10);
@@ -461,7 +461,7 @@ TEST_CASE ("describe_mat2_inverse", "[mat2_inverse]") {
     REQUIRE(Approx(a.e_11) == expected.e_11);
     //Matrix (1, -1, -1, -1)
     a = {1.0f, -1.0f, -1.0f, -1.0f};
-    expected = {0.5f, -0.5f, -0.5f, -0.5f};
+    expected = {-1.0f, 1.0f, 1.0f, 1.0f};
     a = inverse (a);
     REQUIRE(Approx(a.e_00) == expected.e_00);
     REQUIRE(Approx(a.e_10) == expected.e_10);
@@ -469,7 +469,7 @@ TEST_CASE ("describe_mat2_inverse", "[mat2_inverse]") {
     REQUIRE(Approx(a.e_11) == expected.e_11);
     //Matrix (-3, -2, -1, 0)
     a = {-3.0f, -2.0f, -1.0f, 0.0f};
-    expected = {0.0f, -1.0f, -0.5f, 1.5f};
+    expected = {0.0f, 2.0f, 1.0f, -3.0f};
     a = inverse (a);
     REQUIRE(Approx(a.e_00) == expected.e_00);
     REQUIRE(Approx(a.e_10) == expected.e_10);
