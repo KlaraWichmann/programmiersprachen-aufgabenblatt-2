@@ -6,7 +6,7 @@
 #include "window.hpp"
 #include <math.h>
 
-//circle object containing a radius, center and color
+//circle object containing a radius, center, color and highlight color
 class Circle {
     public:
         Circle (float r, Vec2 centr, Color const& clr, Color const& highlight_clr);
@@ -20,7 +20,7 @@ class Circle {
         Color highlight_color_;
 };
 
-//rectangle object containing a minimum vector (bottom left), a maximum vector (top right) and a color
+//rectangle object containing a minimum vector (bottom left), a maximum vector (top right), color and highlight color
 class Rectangle {
     public:
         Rectangle () = default;

@@ -12,9 +12,7 @@ Circle::Circle (float r, Vec2 centr, Color const& clr, Color const& highlight_cl
 
 //determines the circumference of the rectangle
 float Circle::circumference() const {
-    float result = 0.0f;
-    result = 2 * M_PI * radius_;
-    return result;
+    return (2 * M_PI * radius_);
 }
 
 //draws a circle in a given window and if highlight is true in the highlighted color
@@ -63,11 +61,9 @@ Rectangle::Rectangle (Vec2 const& minimum, Vec2 const& maximum, Color const& clr
 
 //determines the circumference of the rectangle
 float Rectangle::circumference() const {
-    float result = 0.0f;
     float width = max_.x - min_.x;
     float height = max_.y - min_.y;
-    result = 2 * width + 2 * height;
-    return result;
+    return (2 * width + 2 * height);
 }
 
 //draws a rectangle in a given window and if highlight is true in the highlighted color

@@ -9,8 +9,6 @@ struct Vec2 {
     float x = 0.0f;
     float y = 0.0f;
 
-    //xVec2 (Vec2 const& v);
-    
     //member methods overwriting += operator for a vector
     Vec2& operator+= (Vec2 const& v);
     //member methods overwriting -= operator for a vector

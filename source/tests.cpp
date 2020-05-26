@@ -294,7 +294,7 @@ TEST_CASE ("describe_devide_two_Vec2", "[vec2_devide_two_Vec2]") {
     c = a / s;
     REQUIRE(Approx(c.x) == expected.x);
     REQUIRE(Approx(c.y) == expected.y);
-    //Vector (1.1, 2.2) /= 0.0
+    //Vector (1.1, 2.2) / 0.0
      a = {1.1f, 2.2f};
      s = 0.0f;
     try {

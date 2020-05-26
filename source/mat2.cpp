@@ -20,7 +20,7 @@ float Mat2::det() const {
     return determinant;
 }
 
-
+//free methods
 
 Mat2 operator* (Mat2 const& m1, Mat2 const& m2) {
     Mat2 result {m1};
